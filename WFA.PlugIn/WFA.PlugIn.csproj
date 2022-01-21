@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C1311BB4-79C4-4610-9E6C-E2DA40E438AD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WFA.PlugIn</RootNamespace>
+    <AssemblyName>WFA.PlugIn</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Image\Resources\icon\logo_dSi_12.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Image\ImageResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MassageBoxModel.cs" />
+    <Compile Include="Model\ResultModel.cs" />
+    <Compile Include="WF-Result.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WF-Result.Designer.cs">
+      <DependentUpon>WF-Result.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WFA-MassageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WFA-MassageBox.Designer.cs">
+      <DependentUpon>WFA-MassageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WFA-SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WFA-SplashScreen.Designer.cs">
+      <DependentUpon>WFA-SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WFA-WaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WFA-WaitForm.Designer.cs">
+      <DependentUpon>WFA-WaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Image\ImageResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImageResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WF-Result.resx">
+      <DependentUpon>WF-Result.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WFA-MassageBox.resx">
+      <DependentUpon>WFA-MassageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WFA-SplashScreen.resx">
+      <DependentUpon>WFA-SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WFA-WaitForm.resx">
+      <DependentUpon>WFA-WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\png\delete_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\png\youtube_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UtilityLib\UtilityLib.csproj">
+      <Project>{B4A79F70-8D7B-4E9F-A156-F325F46BCBAF}</Project>
+      <Name>UtilityLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_9.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_10.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_11.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_12.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_5.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_6.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_7.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Resources\icon\logo_dSi_8.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\Resources\png\delete_64px.png" />
+    <Content Include="Image\Resources\png\export_pdf_32px.png" />
+    <Content Include="Image\Resources\png\folder_32px.png" />
+    <Content Include="Image\Resources\png\folder_64px.png" />
+    <Content Include="Image\Resources\png\folder_settings_32px.png" />
+    <Content Include="Image\Resources\png\folder_tree_32px.png" />
+    <Content Include="Image\Resources\png\home_32px.png" />
+    <Content Include="Image\Resources\png\home_page_96px.png" />
+    <Content Include="Image\Resources\png\image_file_32px.png" />
+    <Content Include="Image\Resources\png\image_file_64px.png" />
+    <Content Include="Image\Resources\png\image_gallery_32px.png" />
+    <Content Include="Image\Resources\png\info_32px.png" />
+    <Content Include="Image\Resources\png\jpg_32px.png" />
+    <Content Include="Image\Resources\png\multiply_32px.png" />
+    <Content Include="Image\Resources\png\multiply_48px.png" />
+    <Content Include="Image\Resources\png\pdf_64px.png" />
+    <Content Include="Image\Resources\png\pdf_window_32px.png" />
+    <Content Include="Image\Resources\png\plus_math_32px.png" />
+    <Content Include="Image\Resources\png\settings_64px.png" />
+    <Content Include="Image\Resources\png\subtract_32px.png" />
+    <Content Include="Image\Resources\png\toggle_indeterminate_32px.png" />
+    <Content Include="Image\Resources\png\toggle_off_32px.png" />
+    <Content Include="Image\Resources\png\toggle_on_32px.png" />
+    <Content Include="Image\Resources\png\update_32px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
