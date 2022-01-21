@@ -94,6 +94,12 @@
     <Compile Include="UserControls\exam\UCEXAM002.Designer.cs">
       <DependentUpon>UCEXAM002.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ExampleScollbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ExampleScollbar.Designer.cs">
+      <DependentUpon>ExampleScollbar.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCClientBody.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\exam\UCEXAM001.resx">
       <DependentUpon>UCEXAM001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ExampleScollbar.resx">
+      <DependentUpon>ExampleScollbar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCClientBody.resx">
       <DependentUpon>UCClientBody.cs</DependentUpon>

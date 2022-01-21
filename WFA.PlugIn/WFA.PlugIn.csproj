@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C1311BB4-79C4-4610-9E6C-E2DA40E438AD}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WFA.PlugIn</RootNamespace>
     <AssemblyName>WFA.PlugIn</AssemblyName>
@@ -35,9 +35,13 @@
   <PropertyGroup>
     <ApplicationIcon>Image\Resources\icon\logo_dSi_12.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,10 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UCScrollbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Image\ImageResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ImageResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Image\Scollbar\Scollbar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Scollbar.resx</DependentUpon>
     </Compile>
     <Compile Include="Model\MassageBoxModel.cs" />
     <Compile Include="Model\ResultModel.cs" />
@@ -82,9 +94,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UCScrollbar.resx">
+      <DependentUpon>UCScrollbar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Image\ImageResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ImageResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\Scollbar\Scollbar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Scollbar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="WF-Result.resx">
       <DependentUpon>WF-Result.cs</DependentUpon>
@@ -194,6 +213,13 @@
     <Content Include="Image\Resources\png\toggle_off_32px.png" />
     <Content Include="Image\Resources\png\toggle_on_32px.png" />
     <Content Include="Image\Resources\png\update_32px.png" />
+    <Content Include="Image\Scollbar\png\downarrow.png" />
+    <Content Include="Image\Scollbar\png\ThumbBottom.png" />
+    <Content Include="Image\Scollbar\png\ThumbMiddle.png" />
+    <Content Include="Image\Scollbar\png\ThumbSpanBottom.png" />
+    <Content Include="Image\Scollbar\png\ThumbSpanTop.png" />
+    <Content Include="Image\Scollbar\png\ThumbTop.png" />
+    <Content Include="Image\Scollbar\png\uparrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
