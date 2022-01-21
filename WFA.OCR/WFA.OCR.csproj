@@ -58,6 +58,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\OCR\UCClientOcr.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OCR\UCClientOcr.Designer.cs">
+      <DependentUpon>UCClientOcr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OCR\UCOCR001.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OCR\UCOCR001.Designer.cs">
+      <DependentUpon>UCOCR001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OCR\UCOCR002.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OCR\UCOCR002.Designer.cs">
+      <DependentUpon>UCOCR002.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\exam\UCClientExam.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +124,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\OCR\UCClientOcr.resx">
+      <DependentUpon>UCClientOcr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OCR\UCOCR001.resx">
+      <DependentUpon>UCOCR001.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\exam\UCClientExam.resx">
       <DependentUpon>UCClientExam.cs</DependentUpon>
     </EmbeddedResource>

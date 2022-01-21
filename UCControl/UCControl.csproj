@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OCR\OCRDA.cs" />
+    <Compile Include="OCR\OCRDTO.cs" />
+    <Compile Include="OCR\OCRModel.cs" />
     <Compile Include="exam\examModel.cs" />
     <Compile Include="exam\examDTO.cs" />
     <Compile Include="exam\examDA.cs" />
