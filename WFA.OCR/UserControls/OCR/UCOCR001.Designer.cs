@@ -32,11 +32,10 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.OFDAddImage = new System.Windows.Forms.OpenFileDialog();
 			this.listboxImage = new System.Windows.Forms.ListBox();
-			this.btnDelete = new System.Windows.Forms.Button();
-			this.btnAdd = new System.Windows.Forms.Button();
 			this.lblSortImage = new System.Windows.Forms.Label();
 			this.btnGenerate = new System.Windows.Forms.Button();
 			this.lblGenerateStatus = new System.Windows.Forms.Label();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// lblToppic
@@ -46,9 +45,9 @@
 			this.lblToppic.ForeColor = System.Drawing.Color.White;
 			this.lblToppic.Location = new System.Drawing.Point(22, 17);
 			this.lblToppic.Name = "lblToppic";
-			this.lblToppic.Size = new System.Drawing.Size(150, 25);
+			this.lblToppic.Size = new System.Drawing.Size(180, 25);
 			this.lblToppic.TabIndex = 0;
-			this.lblToppic.Text = "Convert to PDF";
+			this.lblToppic.Text = "Translation Screen";
 			// 
 			// label1
 			// 
@@ -57,9 +56,9 @@
 			this.label1.ForeColor = System.Drawing.Color.White;
 			this.label1.Location = new System.Drawing.Point(23, 51);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(109, 19);
+			this.label1.Size = new System.Drawing.Size(80, 19);
 			this.label1.TabIndex = 1;
-			this.label1.Text = "Add Image file";
+			this.label1.Text = "Process Id";
 			// 
 			// OFDAddImage
 			// 
@@ -78,40 +77,6 @@
 			this.listboxImage.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
 			this.listboxImage.Size = new System.Drawing.Size(417, 165);
 			this.listboxImage.TabIndex = 3;
-			// 
-			// btnDelete
-			// 
-			this.btnDelete.BackColor = System.Drawing.Color.Black;
-			this.btnDelete.BackgroundImage = global::WFA.PlugIn.Image.ImageResource.subtract_32px;
-			this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-			this.btnDelete.FlatAppearance.BorderSize = 2;
-			this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-			this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-			this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnDelete.ForeColor = System.Drawing.Color.Black;
-			this.btnDelete.Location = new System.Drawing.Point(69, 73);
-			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Size = new System.Drawing.Size(36, 36);
-			this.btnDelete.TabIndex = 4;
-			this.btnDelete.UseVisualStyleBackColor = false;
-			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-			// 
-			// btnAdd
-			// 
-			this.btnAdd.BackColor = System.Drawing.Color.Black;
-			this.btnAdd.BackgroundImage = global::WFA.PlugIn.Image.ImageResource.plus_math_32px;
-			this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(154)))));
-			this.btnAdd.FlatAppearance.BorderSize = 2;
-			this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-			this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-			this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnAdd.ForeColor = System.Drawing.Color.Black;
-			this.btnAdd.Location = new System.Drawing.Point(27, 73);
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(36, 36);
-			this.btnAdd.TabIndex = 2;
-			this.btnAdd.UseVisualStyleBackColor = false;
-			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
 			// lblSortImage
 			// 
@@ -152,17 +117,29 @@
 			this.lblGenerateStatus.Size = new System.Drawing.Size(0, 19);
 			this.lblGenerateStatus.TabIndex = 11;
 			// 
-			// UCPDF2IMGF001
+			// comboBox1
+			// 
+			this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+			this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
+			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox1.Font = new System.Drawing.Font("Itim", 12F);
+			this.comboBox1.ForeColor = System.Drawing.Color.White;
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Location = new System.Drawing.Point(27, 73);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(289, 27);
+			this.comboBox1.TabIndex = 12;
+			// 
+			// UCOCR001
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Black;
+			this.Controls.Add(this.comboBox1);
 			this.Controls.Add(this.lblGenerateStatus);
 			this.Controls.Add(this.btnGenerate);
 			this.Controls.Add(this.lblSortImage);
-			this.Controls.Add(this.btnDelete);
 			this.Controls.Add(this.listboxImage);
-			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.lblToppic);
 			this.Name = "UCOCR001";
@@ -177,12 +154,11 @@
 
 		private System.Windows.Forms.Label lblToppic;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.OpenFileDialog OFDAddImage;
 		private System.Windows.Forms.ListBox listboxImage;
-		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Label lblSortImage;
 		private System.Windows.Forms.Button btnGenerate;
 		private System.Windows.Forms.Label lblGenerateStatus;
+		private System.Windows.Forms.ComboBox comboBox1;
 	}
 }

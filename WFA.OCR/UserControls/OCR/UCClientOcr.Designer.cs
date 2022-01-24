@@ -28,21 +28,22 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCClientOcr));
 			this.panelClient = new System.Windows.Forms.Panel();
-			this.panelMultiFolder = new System.Windows.Forms.Panel();
+			this.panelSetting = new System.Windows.Forms.Panel();
 			this.PActive2 = new System.Windows.Forms.Panel();
-			this.btnmenu2 = new System.Windows.Forms.Button();
-			this.panelSingleFolder = new System.Windows.Forms.Panel();
+			this.btnSetting = new System.Windows.Forms.Button();
+			this.panelTranslate = new System.Windows.Forms.Panel();
 			this.PActive1 = new System.Windows.Forms.Panel();
-			this.btnmenu1 = new System.Windows.Forms.Button();
+			this.btnTranslate = new System.Windows.Forms.Button();
 			this.panelTitle = new System.Windows.Forms.Panel();
 			this.lblActiveTask = new System.Windows.Forms.Label();
 			this.panelHome = new System.Windows.Forms.Panel();
 			this.btnHome = new System.Windows.Forms.Button();
 			this.panelClientTask = new System.Windows.Forms.Panel();
 			this.panelClient.SuspendLayout();
-			this.panelMultiFolder.SuspendLayout();
-			this.panelSingleFolder.SuspendLayout();
+			this.panelSetting.SuspendLayout();
+			this.panelTranslate.SuspendLayout();
 			this.panelTitle.SuspendLayout();
 			this.panelHome.SuspendLayout();
 			this.SuspendLayout();
@@ -50,8 +51,8 @@
 			// panelClient
 			// 
 			this.panelClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-			this.panelClient.Controls.Add(this.panelMultiFolder);
-			this.panelClient.Controls.Add(this.panelSingleFolder);
+			this.panelClient.Controls.Add(this.panelSetting);
+			this.panelClient.Controls.Add(this.panelTranslate);
 			this.panelClient.Controls.Add(this.panelTitle);
 			this.panelClient.Controls.Add(this.panelHome);
 			this.panelClient.Dock = System.Windows.Forms.DockStyle.Left;
@@ -60,15 +61,15 @@
 			this.panelClient.Size = new System.Drawing.Size(256, 560);
 			this.panelClient.TabIndex = 1;
 			// 
-			// panelMultiFolder
+			// panelSetting
 			// 
-			this.panelMultiFolder.Controls.Add(this.PActive2);
-			this.panelMultiFolder.Controls.Add(this.btnmenu2);
-			this.panelMultiFolder.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panelMultiFolder.Location = new System.Drawing.Point(0, 196);
-			this.panelMultiFolder.Name = "panelMultiFolder";
-			this.panelMultiFolder.Size = new System.Drawing.Size(256, 38);
-			this.panelMultiFolder.TabIndex = 24;
+			this.panelSetting.Controls.Add(this.PActive2);
+			this.panelSetting.Controls.Add(this.btnSetting);
+			this.panelSetting.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panelSetting.Location = new System.Drawing.Point(0, 196);
+			this.panelSetting.Name = "panelSetting";
+			this.panelSetting.Size = new System.Drawing.Size(256, 38);
+			this.panelSetting.TabIndex = 24;
 			// 
 			// PActive2
 			// 
@@ -78,36 +79,36 @@
 			this.PActive2.Size = new System.Drawing.Size(6, 35);
 			this.PActive2.TabIndex = 15;
 			// 
-			// btnmenu2
+			// btnSetting
 			// 
-			this.btnmenu2.FlatAppearance.BorderSize = 0;
-			this.btnmenu2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-			this.btnmenu2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-			this.btnmenu2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnmenu2.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnmenu2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.btnmenu2.Image = global::WFA.PlugIn.Image.ImageResource.info_32px;
-			this.btnmenu2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnmenu2.Location = new System.Drawing.Point(9, 0);
-			this.btnmenu2.Name = "btnmenu2";
-			this.btnmenu2.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-			this.btnmenu2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.btnmenu2.Size = new System.Drawing.Size(244, 35);
-			this.btnmenu2.TabIndex = 16;
-			this.btnmenu2.Text = "          menu 2";
-			this.btnmenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnmenu2.UseVisualStyleBackColor = true;
-			this.btnmenu2.Click += new System.EventHandler(this.btnmenu2_Click);
+			this.btnSetting.FlatAppearance.BorderSize = 0;
+			this.btnSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+			this.btnSetting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSetting.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnSetting.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.btnSetting.Image = global::WFA.PlugIn.Image.ImageResource.settings_32px;
+			this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnSetting.Location = new System.Drawing.Point(9, 0);
+			this.btnSetting.Name = "btnSetting";
+			this.btnSetting.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+			this.btnSetting.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.btnSetting.Size = new System.Drawing.Size(244, 35);
+			this.btnSetting.TabIndex = 16;
+			this.btnSetting.Text = "          Setting";
+			this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnSetting.UseVisualStyleBackColor = true;
+			this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
 			// 
-			// panelSingleFolder
+			// panelTranslate
 			// 
-			this.panelSingleFolder.Controls.Add(this.PActive1);
-			this.panelSingleFolder.Controls.Add(this.btnmenu1);
-			this.panelSingleFolder.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panelSingleFolder.Location = new System.Drawing.Point(0, 158);
-			this.panelSingleFolder.Name = "panelSingleFolder";
-			this.panelSingleFolder.Size = new System.Drawing.Size(256, 38);
-			this.panelSingleFolder.TabIndex = 22;
+			this.panelTranslate.Controls.Add(this.PActive1);
+			this.panelTranslate.Controls.Add(this.btnTranslate);
+			this.panelTranslate.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panelTranslate.Location = new System.Drawing.Point(0, 158);
+			this.panelTranslate.Name = "panelTranslate";
+			this.panelTranslate.Size = new System.Drawing.Size(256, 38);
+			this.panelTranslate.TabIndex = 22;
 			// 
 			// PActive1
 			// 
@@ -117,25 +118,25 @@
 			this.PActive1.Size = new System.Drawing.Size(6, 35);
 			this.PActive1.TabIndex = 15;
 			// 
-			// btnmenu1
+			// btnTranslate
 			// 
-			this.btnmenu1.FlatAppearance.BorderSize = 0;
-			this.btnmenu1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-			this.btnmenu1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-			this.btnmenu1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnmenu1.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnmenu1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.btnmenu1.Image = global::WFA.PlugIn.Image.ImageResource.folder_32px;
-			this.btnmenu1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnmenu1.Location = new System.Drawing.Point(9, 0);
-			this.btnmenu1.Name = "btnmenu1";
-			this.btnmenu1.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-			this.btnmenu1.Size = new System.Drawing.Size(244, 35);
-			this.btnmenu1.TabIndex = 0;
-			this.btnmenu1.Text = "          menu 1";
-			this.btnmenu1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnmenu1.UseVisualStyleBackColor = true;
-			this.btnmenu1.Click += new System.EventHandler(this.btnmenu1_Click);
+			this.btnTranslate.FlatAppearance.BorderSize = 0;
+			this.btnTranslate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+			this.btnTranslate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.btnTranslate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnTranslate.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnTranslate.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.btnTranslate.Image = global::WFA.PlugIn.Image.ImageResource.google_translate_32px;
+			this.btnTranslate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnTranslate.Location = new System.Drawing.Point(9, 0);
+			this.btnTranslate.Name = "btnTranslate";
+			this.btnTranslate.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+			this.btnTranslate.Size = new System.Drawing.Size(244, 35);
+			this.btnTranslate.TabIndex = 0;
+			this.btnTranslate.Text = "          Translate";
+			this.btnTranslate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnTranslate.UseVisualStyleBackColor = true;
+			this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
 			// 
 			// panelTitle
 			// 
@@ -156,9 +157,9 @@
 			this.lblActiveTask.Location = new System.Drawing.Point(23, 38);
 			this.lblActiveTask.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
 			this.lblActiveTask.Name = "lblActiveTask";
-			this.lblActiveTask.Size = new System.Drawing.Size(47, 19);
+			this.lblActiveTask.Size = new System.Drawing.Size(74, 19);
 			this.lblActiveTask.TabIndex = 3;
-			this.lblActiveTask.Text = "Exam";
+			this.lblActiveTask.Text = "Translate";
 			// 
 			// panelHome
 			// 
@@ -208,8 +209,8 @@
 			this.Name = "UCClientOcr";
 			this.Size = new System.Drawing.Size(900, 560);
 			this.panelClient.ResumeLayout(false);
-			this.panelMultiFolder.ResumeLayout(false);
-			this.panelSingleFolder.ResumeLayout(false);
+			this.panelSetting.ResumeLayout(false);
+			this.panelTranslate.ResumeLayout(false);
 			this.panelTitle.ResumeLayout(false);
 			this.panelTitle.PerformLayout();
 			this.panelHome.ResumeLayout(false);
@@ -222,14 +223,14 @@
 		private System.Windows.Forms.Panel panelClient;
 		private System.Windows.Forms.Button btnHome;
 		private System.Windows.Forms.Panel PActive1;
-		private System.Windows.Forms.Button btnmenu1;
+		private System.Windows.Forms.Button btnTranslate;
 		private System.Windows.Forms.Label lblActiveTask;
 		private System.Windows.Forms.Panel panelClientTask;
 		private System.Windows.Forms.Panel panelHome;
 		private System.Windows.Forms.Panel panelTitle;
-		private System.Windows.Forms.Panel panelSingleFolder;
-		private System.Windows.Forms.Panel panelMultiFolder;
+		private System.Windows.Forms.Panel panelTranslate;
+		private System.Windows.Forms.Panel panelSetting;
 		private System.Windows.Forms.Panel PActive2;
-		private System.Windows.Forms.Button btnmenu2;
+		private System.Windows.Forms.Button btnSetting;
 	}
 }

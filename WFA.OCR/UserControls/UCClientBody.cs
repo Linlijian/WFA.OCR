@@ -20,11 +20,11 @@ namespace WFA.OCR.UserControls
 
         private void btnexam_Click(object sender, EventArgs e)
         {
-            if (!MainForm.Instance.PnlClientBody.Controls.ContainsKey("UCClientExam"))
+            if (!MainForm.Instance.PnlClientBody.Controls.ContainsKey("UCClientOcr"))
             {
-                UserControlHelper.SetUserControl(MainForm.Instance.PnlClientBody, userControl: new UCClientExam(), dockStyle: UserControlDockStyle.DockStyleFill);
+                UserControlHelper.SetUserControl(MainForm.Instance.PnlClientBody, userControl: new UCClientOcr(), dockStyle: UserControlDockStyle.DockStyleFill);
             }
-            MainForm.Instance.PnlClientBody.Controls["UCClientExam"].BringToFront();
+            MainForm.Instance.PnlClientBody.Controls["UCClientOcr"].BringToFront();
             MainForm.Instance.PnlTitle.BackColor = Color.FromArgb(32, 32, 32);
         }
     }

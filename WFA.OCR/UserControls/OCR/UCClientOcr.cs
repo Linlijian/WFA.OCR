@@ -18,14 +18,14 @@ namespace WFA.OCR.UserControls
 			PActive2.Hide();
 		}
 
-		private void btnmenu1_Click(object sender, EventArgs e)
+		private void btnTranslate_Click(object sender, EventArgs e)
 		{
 			Global.PActiveHide(panelClient);
 			Global.PActiveShow(PActive1);
 			UserControlHelper.SetUserControl(panelClientTask, userControl: new UCOCR001(), dockStyle: UserControlDockStyle.DockStyleFill);
 		}
 
-		private void btnmenu2_Click(object sender, EventArgs e)
+		private void btnSetting_Click(object sender, EventArgs e)
 		{
 			Global.PActiveHide(panelClient);
 			Global.PActiveShow(PActive2);

@@ -133,6 +133,36 @@ namespace WFA.PlugIn.Image {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap google_translate_24px {
+            get {
+                object obj = ResourceManager.GetObject("google_translate_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap google_translate_32px {
+            get {
+                object obj = ResourceManager.GetObject("google_translate_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap google_translate_64px {
+            get {
+                object obj = ResourceManager.GetObject("google_translate_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap home_32px {
             get {
                 object obj = ResourceManager.GetObject("home_32px", resourceCulture);
@@ -366,6 +396,16 @@ namespace WFA.PlugIn.Image {
         public static System.Drawing.Bitmap plus_math_32px {
             get {
                 object obj = ResourceManager.GetObject("plus_math_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap settings_32px {
+            get {
+                object obj = ResourceManager.GetObject("settings_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

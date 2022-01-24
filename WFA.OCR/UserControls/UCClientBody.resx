@@ -186,7 +186,7 @@
         2dLS0tLSEmRu7h+27f7qzFlC7QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnPDFtoImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnTranslate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAr9JREFUeF7t
         mlFu00AQhnMLuANIXAWlL1AKPNK+ATeAE8FJkDgEzzy069S1G2aWP9F2uvbaxPt7kfaTRk1mJvv/O14r
@@ -201,58 +201,6 @@
         Wmgp7AQ49zmoRa+8JTgJ0f8BeHQSnPuEkueYRyCdj5Sg5L5KjF55i151icEPPsFJ+ILUEfUQBtL5mCK4
         b9sXeLgYQ2tO8bModMEEdD90wQR0P3TBBHQ/dMEEdD90wQR0P3TBBHQ/dMEEdD90wQR0P3TBBHQ/dMEE
         dD9WsLSAzXzEREsK2MxHTLSkgM18xERLCtisVCqVSiXJZvMHZ/rUNt2+9TUAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ucScrollbar.DownArrowImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABUSURBVDhP3cvB
-        CQAhDETRNJgu0n8L6iA5GMYY9ObCg3XIl/G1B3Ssmj+qWvZbbGbLIdtpjAPnh2ynMTuM7zSOQQwhjWEX
-        wjEGFkIp3vklvkTHAmkdeKOeKymJcI4AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ucScrollbar.ThumbBottomImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
-        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ucScrollbar.ThumbBottomSpanImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
-        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ucScrollbar.ThumbMiddleImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA0AAAAoCAYAAAAlinD5AAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABdSURBVEhLncjB
-        CQAgDMDA7r90dYDDgIH7ZG77gbNwFs7CWTgLZ+EsnIWzcBbOwlk4C2fhLJyFs3AWzsJZOAtn4SychbNw
-        Fs7CWTgLZ+EsnIWzcBbOwlk4C2fhfJg9M7YGFzm5A3EAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ucScrollbar.ThumbTopImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
-        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ucScrollbar.ThumbTopSpanImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
-        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ucScrollbar.UpArrowImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABRSURBVDhP3YzR
-        CQAgCAVd0C3cfwUrQhB5ltSfwYFdXjSPfgBllT0wc5nOsYhAf41XaMS3Y+xD9EEaxyDe0xgtIg9jW7TZ
-        430aV+gSPwJlAdIBgfWeKzw5AuQAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

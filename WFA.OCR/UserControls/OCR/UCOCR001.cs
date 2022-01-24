@@ -18,7 +18,9 @@ namespace WFA.OCR.UserControls
 		}
 		private void UCOCR001_Load(object sender, EventArgs e)
 		{
-			btnDelete.Visible = false;
+			comboBox1.Items.Add("aa");
+			comboBox1.Items.Add("aa");
+			comboBox1.Items.Add("aa");
 		}
 		#endregion
 
@@ -31,9 +33,6 @@ namespace WFA.OCR.UserControls
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			ClearGenerateStatus();
-
-			if (listboxImage.Items.Count == 0)
-				btnDelete.Visible = false;
 		}
 		private void btnGenerate_Click(object sender, EventArgs e)
 		{

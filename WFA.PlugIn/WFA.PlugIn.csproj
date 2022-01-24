@@ -195,6 +195,9 @@
     <Content Include="Image\Resources\png\folder_64px.png" />
     <Content Include="Image\Resources\png\folder_settings_32px.png" />
     <Content Include="Image\Resources\png\folder_tree_32px.png" />
+    <Content Include="Image\Resources\png\google_translate_24px.png" />
+    <Content Include="Image\Resources\png\google_translate_32px.png" />
+    <Content Include="Image\Resources\png\google_translate_64px.png" />
     <Content Include="Image\Resources\png\home_32px.png" />
     <Content Include="Image\Resources\png\home_page_96px.png" />
     <Content Include="Image\Resources\png\image_file_32px.png" />
@@ -207,6 +210,7 @@
     <Content Include="Image\Resources\png\pdf_64px.png" />
     <Content Include="Image\Resources\png\pdf_window_32px.png" />
     <Content Include="Image\Resources\png\plus_math_32px.png" />
+    <Content Include="Image\Resources\png\settings_32px.png" />
     <Content Include="Image\Resources\png\settings_64px.png" />
     <Content Include="Image\Resources\png\subtract_32px.png" />
     <Content Include="Image\Resources\png\toggle_indeterminate_32px.png" />
