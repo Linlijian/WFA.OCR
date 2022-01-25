@@ -23,15 +23,21 @@ namespace WFA.PlugIn
 
             switch (model.BUTTON_TYPE)
             {
-                case ButtonType.OK:
-                    btnOK.Location = new Point(135, 134);
-                    btnCancel.Visible = false;
-                    break;
-                case ButtonType.CANCEL:
-                    btnCancel.Location = new Point(135, 134);
-                    btnOK.Visible = false;
-                    break;
-            }
+				case ButtonType.OK:
+					btnOK.Location = new Point(135, 134);
+					btnCancel.Visible = false;
+					break;
+				case ButtonType.CANCEL:
+					btnCancel.Location = new Point(135, 134);
+					btnOK.Visible = false;
+					break;
+				case ButtonType.NONE:
+					btnOK.Visible = false;
+					btnCancel.Visible = false;
+					break;
+				case ButtonType.OK_CANCEL:
+					break;
+			}
         }
         private void btnOK_Click(object sender, EventArgs e)
         {

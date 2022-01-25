@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControl\PKComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UCScrollbar.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -18,6 +18,7 @@ namespace WFA.PlugIn
         public const string OK = "OK";
         public const string CANCEL = "CANCEL";
         public const string OK_CANCEL = "OK_CANCEL";
-    }
+        public const string NONE = "NONE";
+	}
         
 }
