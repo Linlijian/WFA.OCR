@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System;
 
 namespace Helper
 {
@@ -81,14 +82,23 @@ namespace Helper
         {
             _control.Hide();
         }
-        #endregion
 
-        #region Method
-        /// <summary>
-        /// find children in control
-        /// </summary>
-        /// <param name="controls"></param>
-        private static void PAFindControl(Control.ControlCollection controls)
+		/// <summary>
+		/// Panel Dispose
+		/// </summary>
+		/// <param name="_control"></param>
+		public static void PDispose(Control _control)
+		{
+			_control.Dispose();
+		}
+		#endregion
+
+		#region Method
+		/// <summary>
+		/// find children in control
+		/// </summary>
+		/// <param name="controls"></param>
+		private static void PAFindControl(Control.ControlCollection controls)
         {
             var regex = new Regex("(PA)");
             foreach (Control control in controls)
@@ -125,7 +135,7 @@ namespace Helper
                 }
             }
         }
-        #endregion
+		#endregion
 
-    }
+	}
 }

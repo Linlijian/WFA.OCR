@@ -2,17 +2,17 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Helper;
-using UCControl.exam;
 using WFA.PlugIn;
 using System.Diagnostics;
 using WFA.OCR.Helper;
+using UCControl.OCR;
 
 namespace WFA.OCR.UserControls
 {
 	public partial class UCOCR001 : UserControl
 	{
 		#region init
-		private examDA exam = new examDA();
+		private OCRDA ocr = new OCRDA();
 		Overlay overly;
 
 		public UCOCR001()
@@ -72,19 +72,19 @@ namespace WFA.OCR.UserControls
 		#region method        
 		private void Generate()
 		{
-			var dto = new examDA();
-			dto = exam;
+			var dto = new OCRDA();
+			dto = ocr;
 
 			try
 			{
-				dto.DTO.Model.GenerateType = examGenerateType.xxx;
-				dto.Generate(exam.DTO);
-				exam.DTO.ErrorResults.ERROR_CODE = 0;
+				dto.DTO.Model.GenerateType = OCRGenerateType.xxx;
+				dto.Generate(ocr.DTO);
+				ocr.DTO.ErrorResults.ERROR_CODE = 0;
 			}
 			catch (Exception ex)
 			{
-				exam.DTO.ErrorResults.ERROR_CODE = -1;
-				exam.DTO.ErrorResults.ERROR_MESSAGE = ex.Message;
+				ocr.DTO.ErrorResults.ERROR_CODE = -1;
+				ocr.DTO.ErrorResults.ERROR_MESSAGE = ex.Message;
 			}
 		}
 		private void ClearGenerateStatus()
