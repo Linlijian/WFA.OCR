@@ -5,6 +5,7 @@ using Helper;
 using UCControl.exam;
 using WFA.PlugIn;
 using System.Diagnostics;
+using WFA.OCR.Helper;
 
 namespace WFA.OCR.UserControls
 {
@@ -12,6 +13,7 @@ namespace WFA.OCR.UserControls
 	{
 		#region init
 		private examDA exam = new examDA();
+		Overlay overly;
 
 		public UCOCR001()
 		{
@@ -28,19 +30,42 @@ namespace WFA.OCR.UserControls
 		{
 			try
 			{
-				// open overal
-				GenerateResult("Info", "Overlay is running.Please take your hotkey.", ButtonType.OK);
+				ClearGenerateStatus();
+
+				PluginHelper.MassageBox("Info", "Overlay is running.Please take your hotkey.", ButtonType.OK);
 				lblStartStatus.Text = "Ok here we go!";
+
+				overly = new Overlay(ddlProcessId.SelectedItem.ToString());
+				overly.Show();
 			}
-			catch (Exception)
+			catch (Exception err)
 			{
-				
-				throw;
+				PluginHelper.MassageBox("Error", err.Message, ButtonType.OK);
 			}
 		}
 		private void ddlProcessId_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			//lblProcesssId.Text = "Connect process id complete";
+		}
+		private void btnExitOverly_Click(object sender, EventArgs e)
+		{
+			ClearGenerateStatus();
+			overly.Close();
+		}
+		private void btnReload_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				ClearGenerateStatus();
+				ddlProcessId.Items.Clear();
+				BuildDDL();
+
+				lblReloadStatus.Text = "Reload Complete!";
+			}
+			catch (Exception err)
+			{
+				PluginHelper.MassageBox("Error", err.Message, ButtonType.OK);
+			}
 		}
 		#endregion
 
@@ -66,18 +91,8 @@ namespace WFA.OCR.UserControls
 		{
 			lblProcesssId.Text = "";
 			lblStartStatus.Text = "";
-		}
-		private void GenerateResult(string title, string text, string mode)
-		{
-			var message = new MassageBoxModel();
-			message.TITLE = title;
-			message.MESSAGE = text;
-			message.BUTTON_TYPE = mode;
-
-			using (MassageBox box = new MassageBox(message))
-			{
-				box.ShowDialog(this);
-			}
+			lblExitOverlyStatus.Text = "";
+			lblReloadStatus.Text = "";
 		}
 		private void BuildDDL()
 		{
@@ -100,5 +115,7 @@ namespace WFA.OCR.UserControls
 			}
 		}
 		#endregion
+
+		
 	}
 }

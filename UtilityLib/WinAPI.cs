@@ -19,6 +19,10 @@ namespace UtilityLib
 
 		[DllImport("User32.dll")]
 		public static extern IntPtr FindWindow(string strClassName, string strWindowName);
+		[DllImport("user32.dll", SetLastError = true)]
+		public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+		[DllImport("user32.dll", SetLastError = true)]
+		public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
 		[DllImport("User32.dll")]
 		public static extern Int32 SendMessage(
@@ -163,7 +167,7 @@ namespace UtilityLib
 		[DllImport("user32.dll", EntryPoint = "ReleaseDC")]
 		public static extern IntPtr ReleaseDC(IntPtr hWnd, IntPtr hDc);
 		[DllImport("user32.dll")]
-		public static extern IntPtr GetWindowRect(IntPtr hWnd, ref RECT rect);
+		public static extern IntPtr GetWindowRect(IntPtr hWnd, out RECT rect);
 		[DllImport("user32.dll")]
 		public static extern IntPtr PrintWindow(IntPtr hwnd, IntPtr hdcBlt, int nFlags);
 		[DllImport("user32.dll")]
@@ -205,8 +209,6 @@ namespace UtilityLib
 
 		public const int MOUSEEVENTF_LEFTDOWN = 0x02;
 		public const int MOUSEEVENTF_LEFTUP = 0x04;
-
-		
 	}
 }
 
