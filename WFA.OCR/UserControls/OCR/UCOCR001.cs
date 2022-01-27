@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Helper;
 using UCControl.exam;
 using WFA.PlugIn;
+using System.Diagnostics;
 
 namespace WFA.OCR.UserControls
 {
@@ -18,48 +19,28 @@ namespace WFA.OCR.UserControls
 		}
 		private void UCOCR001_Load(object sender, EventArgs e)
 		{
-			comboBox1.Items.Add("aa");
-			comboBox1.Items.Add("aa");
-			comboBox1.Items.Add("aa");
+			BuildDDL();
 		}
 		#endregion
 
 		#region event
-		private void btnAdd_Click(object sender, EventArgs e)
+		private void btnStartTranslate_Click(object sender, EventArgs e)
 		{
-			ClearGenerateStatus();
-			
-		}
-		private void btnDelete_Click(object sender, EventArgs e)
-		{
-			ClearGenerateStatus();
-		}
-		private void btnGenerate_Click(object sender, EventArgs e)
-		{
-			ClearGenerateStatus();
-
-			using (WaitForm form = new WaitForm(Generate))
+			try
 			{
-				form.ShowDialog(this);
+				// open overal
+				GenerateResult("Info", "Overlay is running.Please take your hotkey.", ButtonType.OK);
+				lblStartStatus.Text = "Ok here we go!";
 			}
-
-			if (exam.DTO.ErrorResults.ERROR_CODE < 0)
+			catch (Exception)
 			{
-				var message = new MassageBoxModel();
-				message.TITLE = "Error";
-				message.MESSAGE = "Please re-check to Generate PDF.\r\nDescription: " + exam.DTO.ErrorResults.ERROR_MESSAGE;
-				message.BUTTON_TYPE = ButtonType.OK;
-
-				using (MassageBox box = new MassageBox(message))
-				{
-					box.ShowDialog(this);
-				}
-
-				return;
+				
+				throw;
 			}
-
-			GenerateResult();
-			lblGenerateStatus.Text = "Generate Complete!";
+		}
+		private void ddlProcessId_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			//lblProcesssId.Text = "Connect process id complete";
 		}
 		#endregion
 
@@ -83,18 +64,39 @@ namespace WFA.OCR.UserControls
 		}
 		private void ClearGenerateStatus()
 		{
-			lblGenerateStatus.Text = "";
+			lblProcesssId.Text = "";
+			lblStartStatus.Text = "";
 		}
-		private void GenerateResult()
+		private void GenerateResult(string title, string text, string mode)
 		{
 			var message = new MassageBoxModel();
-			message.TITLE = "Info";
-			message.MESSAGE = "Coomplete";
-			message.BUTTON_TYPE = ButtonType.OK;
+			message.TITLE = title;
+			message.MESSAGE = text;
+			message.BUTTON_TYPE = mode;
 
 			using (MassageBox box = new MassageBox(message))
 			{
 				box.ShowDialog(this);
+			}
+		}
+		private void BuildDDL()
+		{
+			Process[] processlist = Process.GetProcesses();
+			foreach (Process theprocess in processlist)
+			{
+				if(!theprocess.MainWindowTitle.Equals(""))
+					ddlProcessId.Items.Add(theprocess.MainWindowTitle);
+			}
+
+			if (ddlProcessId.Items.Count > 0)
+			{
+				ddlProcessId.SelectedText = processlist[0].MainWindowTitle;
+				ddlProcessId.SelectedIndex = 0;
+			}
+			else
+			{
+				ddlProcessId.Items.Add("Process Not Found!");
+				ddlProcessId.SelectedIndex = 0;
 			}
 		}
 		#endregion

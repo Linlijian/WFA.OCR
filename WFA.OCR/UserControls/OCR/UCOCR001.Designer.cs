@@ -30,12 +30,10 @@
 		{
 			this.lblToppic = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.OFDAddImage = new System.Windows.Forms.OpenFileDialog();
-			this.listboxImage = new System.Windows.Forms.ListBox();
-			this.lblSortImage = new System.Windows.Forms.Label();
-			this.btnGenerate = new System.Windows.Forms.Button();
-			this.lblGenerateStatus = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.btnStartTranslate = new System.Windows.Forms.Button();
+			this.lblProcesssId = new System.Windows.Forms.Label();
+			this.ddlProcessId = new System.Windows.Forms.ComboBox();
+			this.lblStartStatus = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// lblToppic
@@ -60,86 +58,67 @@
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Process Id";
 			// 
-			// OFDAddImage
+			// btnStartTranslate
 			// 
-			this.OFDAddImage.FileName = "OFDAddImage";
+			this.btnStartTranslate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.btnStartTranslate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.btnStartTranslate.FlatAppearance.BorderSize = 2;
+			this.btnStartTranslate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+			this.btnStartTranslate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.btnStartTranslate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnStartTranslate.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnStartTranslate.ForeColor = System.Drawing.Color.White;
+			this.btnStartTranslate.Location = new System.Drawing.Point(28, 128);
+			this.btnStartTranslate.Name = "btnStartTranslate";
+			this.btnStartTranslate.Size = new System.Drawing.Size(110, 34);
+			this.btnStartTranslate.TabIndex = 10;
+			this.btnStartTranslate.Text = "Start";
+			this.btnStartTranslate.UseVisualStyleBackColor = false;
+			this.btnStartTranslate.Click += new System.EventHandler(this.btnStartTranslate_Click);
 			// 
-			// listboxImage
+			// lblProcesssId
 			// 
-			this.listboxImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-			this.listboxImage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.listboxImage.Font = new System.Drawing.Font("Itim", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.listboxImage.ForeColor = System.Drawing.Color.White;
-			this.listboxImage.FormattingEnabled = true;
-			this.listboxImage.ItemHeight = 15;
-			this.listboxImage.Location = new System.Drawing.Point(27, 115);
-			this.listboxImage.Name = "listboxImage";
-			this.listboxImage.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-			this.listboxImage.Size = new System.Drawing.Size(417, 165);
-			this.listboxImage.TabIndex = 3;
+			this.lblProcesssId.AutoSize = true;
+			this.lblProcesssId.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblProcesssId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(154)))));
+			this.lblProcesssId.Location = new System.Drawing.Point(324, 80);
+			this.lblProcesssId.Name = "lblProcesssId";
+			this.lblProcesssId.Size = new System.Drawing.Size(0, 19);
+			this.lblProcesssId.TabIndex = 11;
 			// 
-			// lblSortImage
+			// ddlProcessId
 			// 
-			this.lblSortImage.AutoSize = true;
-			this.lblSortImage.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblSortImage.ForeColor = System.Drawing.Color.White;
-			this.lblSortImage.Location = new System.Drawing.Point(24, 296);
-			this.lblSortImage.Name = "lblSortImage";
-			this.lblSortImage.Size = new System.Drawing.Size(292, 19);
-			this.lblSortImage.TabIndex = 6;
-			this.lblSortImage.Text = "Sorting file name  before converet to pdf.";
+			this.ddlProcessId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+			this.ddlProcessId.Cursor = System.Windows.Forms.Cursors.Default;
+			this.ddlProcessId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ddlProcessId.Font = new System.Drawing.Font("Itim", 12F);
+			this.ddlProcessId.ForeColor = System.Drawing.Color.White;
+			this.ddlProcessId.FormattingEnabled = true;
+			this.ddlProcessId.Location = new System.Drawing.Point(28, 72);
+			this.ddlProcessId.Name = "ddlProcessId";
+			this.ddlProcessId.Size = new System.Drawing.Size(290, 27);
+			this.ddlProcessId.TabIndex = 12;
+			this.ddlProcessId.SelectedIndexChanged += new System.EventHandler(this.ddlProcessId_SelectedIndexChanged);
 			// 
-			// btnGenerate
+			// lblStartStatus
 			// 
-			this.btnGenerate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.btnGenerate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.btnGenerate.FlatAppearance.BorderSize = 2;
-			this.btnGenerate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-			this.btnGenerate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-			this.btnGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnGenerate.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnGenerate.ForeColor = System.Drawing.Color.White;
-			this.btnGenerate.Location = new System.Drawing.Point(28, 353);
-			this.btnGenerate.Name = "btnGenerate";
-			this.btnGenerate.Size = new System.Drawing.Size(110, 34);
-			this.btnGenerate.TabIndex = 10;
-			this.btnGenerate.Text = "Generate";
-			this.btnGenerate.UseVisualStyleBackColor = false;
-			this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
-			// 
-			// lblGenerateStatus
-			// 
-			this.lblGenerateStatus.AutoSize = true;
-			this.lblGenerateStatus.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblGenerateStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(154)))));
-			this.lblGenerateStatus.Location = new System.Drawing.Point(144, 368);
-			this.lblGenerateStatus.Name = "lblGenerateStatus";
-			this.lblGenerateStatus.Size = new System.Drawing.Size(0, 19);
-			this.lblGenerateStatus.TabIndex = 11;
-			// 
-			// comboBox1
-			// 
-			this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-			this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
-			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox1.Font = new System.Drawing.Font("Itim", 12F);
-			this.comboBox1.ForeColor = System.Drawing.Color.White;
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(27, 73);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(289, 27);
-			this.comboBox1.TabIndex = 12;
+			this.lblStartStatus.AutoSize = true;
+			this.lblStartStatus.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblStartStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(154)))));
+			this.lblStartStatus.Location = new System.Drawing.Point(144, 143);
+			this.lblStartStatus.Name = "lblStartStatus";
+			this.lblStartStatus.Size = new System.Drawing.Size(0, 19);
+			this.lblStartStatus.TabIndex = 13;
 			// 
 			// UCOCR001
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Black;
-			this.Controls.Add(this.comboBox1);
-			this.Controls.Add(this.lblGenerateStatus);
-			this.Controls.Add(this.btnGenerate);
-			this.Controls.Add(this.lblSortImage);
-			this.Controls.Add(this.listboxImage);
+			this.Controls.Add(this.lblStartStatus);
+			this.Controls.Add(this.ddlProcessId);
+			this.Controls.Add(this.lblProcesssId);
+			this.Controls.Add(this.btnStartTranslate);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.lblToppic);
 			this.Name = "UCOCR001";
@@ -154,11 +133,9 @@
 
 		private System.Windows.Forms.Label lblToppic;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.OpenFileDialog OFDAddImage;
-		private System.Windows.Forms.ListBox listboxImage;
-		private System.Windows.Forms.Label lblSortImage;
-		private System.Windows.Forms.Button btnGenerate;
-		private System.Windows.Forms.Label lblGenerateStatus;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.Button btnStartTranslate;
+		private System.Windows.Forms.Label lblProcesssId;
+		private System.Windows.Forms.ComboBox ddlProcessId;
+		private System.Windows.Forms.Label lblStartStatus;
 	}
 }
