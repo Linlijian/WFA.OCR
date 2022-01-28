@@ -154,9 +154,9 @@
 			this.lblRebuildDDLDetail.ForeColor = System.Drawing.Color.White;
 			this.lblRebuildDDLDetail.Location = new System.Drawing.Point(24, 217);
 			this.lblRebuildDDLDetail.Name = "lblRebuildDDLDetail";
-			this.lblRebuildDDLDetail.Size = new System.Drawing.Size(363, 19);
+			this.lblRebuildDDLDetail.Size = new System.Drawing.Size(454, 19);
 			this.lblRebuildDDLDetail.TabIndex = 16;
-			this.lblRebuildDDLDetail.Text = "Reload is used to search for process id to translate.";
+			this.lblRebuildDDLDetail.Text = "The reload command is used to look for a process id to translate.";
 			// 
 			// lblExitOverly
 			// 
@@ -176,10 +176,11 @@
 			this.lblExitOverlyDetail.ForeColor = System.Drawing.Color.White;
 			this.lblExitOverlyDetail.Location = new System.Drawing.Point(24, 353);
 			this.lblExitOverlyDetail.Name = "lblExitOverlyDetail";
-			this.lblExitOverlyDetail.Size = new System.Drawing.Size(451, 38);
+			this.lblExitOverlyDetail.Size = new System.Drawing.Size(614, 38);
 			this.lblExitOverlyDetail.TabIndex = 18;
-			this.lblExitOverlyDetail.Text = "If you move the screen of the program you want to translate, \r\nthe Overlay progra" +
-    "m will not follow. Press it out and start again.";
+			this.lblExitOverlyDetail.Text = "The Overlay application will not follow the screen of the program you want to tra" +
+    "nslate \r\nif you move the screen of the program you want to translate. Remove it " +
+    "and begin again.";
 			// 
 			// btnExitOverly
 			// 

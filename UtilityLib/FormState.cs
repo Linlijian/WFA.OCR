@@ -13,4 +13,10 @@ namespace UtilityLib
         public string CaseSelect { get; set; }
         public string DupFile { get; set; }
     }
+
+	public class HotkeyDDL
+	{
+		public string TEXT { get; set; }
+		public string VALUE { get; set; }
+	}
 }

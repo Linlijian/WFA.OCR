@@ -21,77 +21,68 @@ namespace WFA.PlugIn
             InitializeComponent();
             VerifyStartUp();
         }
-        private void VerifyStartUp()
-        {
-            //load xml
-            lblStatus.Text = "Load Config";
-            var xml = new XMLHelper();
-            xml.loadConfig();
+		private void VerifyStartUp()
+		{
+			try
+			{
+				//load .pikun
+				lblStatus.Text = "Load Config";
 
-            //check folder output
-            //เราไม่ต้องสร้างใหม่ ให้หามาเองหรือโหลดจาก git แบบ auto ถ้ามันหายไป
-            //เราจะได้ตัดปัญหาการหาไม่เจอ
-            //change icon all plug in
+				if (Directory.Exists(SessionHelper.SYS_PATH))
+				{
+					if (!ReadConfig()) return;
+				}
+				else
+				{
+					lblStatus.Text = "Create Folder Config";
+					string result = SplashScreenHelper.CreateConfig(SessionHelper.SYS_PATH, SessionHelper.SYS_CONFIG_PATH);
+					if (!result.IsNullOrEmpty())
+					{
+						SetError(result, "000", "Fail");
+						return;
+					}
 
-            //check dll ทุกอย่างจะได้ไม่ error เรื่อยๆ
-            lblStatus.Text = "Folder Output";
-            try
-            {
-                if (!xml.STATE.FolderOutput.IsNullOrEmpty())
-                {
-                    if (!Directory.Exists(xml.STATE.FolderOutput))
-                    {
-                        var state = new FormState();
-                        state.FolderOutput = @"C:\Generate\";
-                        Directory.CreateDirectory(state.FolderOutput);
+					//read file
+					if (!ReadConfig()) return;
+				}
 
-                        xml.writeConfig(xml.STATE);
-                    }
-                }
-                else
-                {
-                    SessionHelper.SYS_START_UP = false;
-                    SessionHelper.SYS_ERROR_CODE = "003";
-                    SessionHelper.SYS_ERROR_MESSAGE = "Can't create config. if first runing please Restart!";
-                    SessionHelper.SYS_TITLE = "Infomation";
-
-                    return;
-                }
-                
-            }
-            catch (Exception x)
-            {
-                SessionHelper.SYS_START_UP = false;
-                SessionHelper.SYS_ERROR_CODE = "001";
-                SessionHelper.SYS_ERROR_MESSAGE = "Can't Create Folder Output!";
-                SessionHelper.SYS_TITLE = "ERROR";
-
-                return;
-            }
-
-            lblStatus.Text = "Load Session";
-            xml.loadConfig();
-
-            try
-            {
-                var load_data = xml;
-                SessionHelper.XML_FOLDER_INPUT = load_data.STATE.FolderIntput;
-                SessionHelper.XML_FOLDER_OUTPUT = load_data.STATE.FolderOutput;
-                SessionHelper.XML_CASE_SELECT = load_data.STATE.CaseSelect;
-                SessionHelper.XML_DUP_FILE = load_data.STATE.DupFile;
-            }
-            catch (Exception x)
-            {
-                SessionHelper.SYS_START_UP = false;
-                SessionHelper.SYS_ERROR_CODE = "002";
-                SessionHelper.SYS_ERROR_MESSAGE = "Can't Load config in Session";
-                SessionHelper.SYS_TITLE = "ERROR";
-
-                return;
-            }
-
-            SessionHelper.SYS_START_UP = true;
+				SessionHelper.SYS_START_UP = true;
+			}
+			catch (Exception e)
+			{
+				SetError(lblStatus.Text + " " + e.Message, "001", "Error");
+			}
         }
 
-    }
+		private void SetError(string _text, string _code, string _title)
+		{
+			SessionHelper.SYS_START_UP = false;
+			SessionHelper.SYS_ERROR_CODE = _code;
+			SessionHelper.SYS_ERROR_MESSAGE = "Cann't Load config\r\n" + _text;
+			SessionHelper.SYS_TITLE = _title;
+		}
+		private bool ReadConfig()
+		{
+			string config = SplashScreenHelper.GetFile(SessionHelper.SYS_PATH);
+			if (config.IsNullOrEmpty())
+			{
+				lblStatus.Text = "Not found file ==> Create Folder Config";
+				string result = SplashScreenHelper.CreateFile(SessionHelper.SYS_CONFIG_PATH);
+				if (!result.IsNullOrEmpty())
+				{
+					SetError(result, "000", "Fail");
+					return false;
+				}
+
+				config = SplashScreenHelper.GetFile(SessionHelper.SYS_PATH);
+			}
+			
+			var arr = SplashScreenHelper.ReadConfig(config);
+
+			lblStatus.Text = "Load Hotkey";
+			SessionHelper.SYS_HOTKEY = arr.Where(a => a.Contains("Hotkey")).FirstOrDefault().Split(':').Last();
+
+			return true;
+		}
+	}
 }

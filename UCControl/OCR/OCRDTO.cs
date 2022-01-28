@@ -19,6 +19,8 @@ namespace UCControl.OCR
 
 	public class OCRGenerateType
 	{
-		public const string xxx = "xxx";
+		public const string xxx = "xxx"; 
+		public const string SaveHotkey = "SaveHotkey";
+		public const string GetDDL = "GetDDL";
 	}
 }

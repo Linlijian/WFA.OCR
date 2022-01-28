@@ -30,5 +30,28 @@ namespace UtilityLib
         public static string XML_FOLDER_OUTPUT;
         public static string XML_CASE_SELECT;
         public static string XML_DUP_FILE;
-    }
+
+
+		public static string TRANS_PATHDATA;
+		public static string TRANS_LANGUAGE_FROM;
+		public static string TRANS_LANGUAGE_TO;
+		public static string TRANS_LANGUAGE;
+
+		public static string SYS_HOTKEY;
+		public static string SYS_CONFIG_PATH
+		{
+			get {
+				return SYS_PATH + "\\Config.pikun";
+			}
+		}
+		public static string SYS_PATH
+		{
+			get
+			{
+				return AppDomain.CurrentDomain.BaseDirectory + "Config";
+			}
+		}
+
+
+	}
 }
