@@ -36,5 +36,6 @@ namespace UtilityLib
     {
         public string ERROR_MESSAGE { get; set; }
         public int ERROR_CODE { get; set; }
-    }
+        public bool IS_RESULT { get; set; }
+	}
 }

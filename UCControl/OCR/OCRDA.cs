@@ -8,7 +8,7 @@ using UtilityLib;
 
 namespace UCControl.OCR
 {
-	public class OCRDA
+	public class OCRDA : GlobalDA
 	{
 		public OCRDTO DTO { get; set; }
 
@@ -16,8 +16,9 @@ namespace UCControl.OCR
 		{
 			DTO = new OCRDTO();
 		}
-		public OCRDTO Generate(OCRDTO dto)
+		protected override GlobalDTO PKGenerate(GlobalDTO globalDTO)
 		{
+			OCRDTO dto = (OCRDTO)globalDTO;
 			switch (dto.Model.GenerateType)
 			{
 				case OCRGenerateType.xxx: return xxx(dto);
@@ -39,9 +40,11 @@ namespace UCControl.OCR
 			{
 				var config = SplashScreenHelper.ReadConfig(dto.Model.HOTKEY_PATH);
 				dto.Model.HOTKEY = config.Where(x => x.Contains("Hotkey")).FirstOrDefault().Split(':').Last();
+				dto.ErrorResults.IS_RESULT = true;
 			}
 			else
 			{
+				dto.ErrorResults.IS_RESULT = false;
 				dto.ErrorResults.ERROR_CODE = -1;
 				dto.ErrorResults.ERROR_MESSAGE = "Not found folder!";
 			}
@@ -75,9 +78,11 @@ namespace UCControl.OCR
 							writer.WriteLine(item);
 					}
 				}
+				dto.ErrorResults.IS_RESULT = true;
 			}
 			else
 			{
+				dto.ErrorResults.IS_RESULT = false;
 				dto.ErrorResults.ERROR_CODE = -1;
 				dto.ErrorResults.ERROR_MESSAGE = "Not found folder!";
 			}

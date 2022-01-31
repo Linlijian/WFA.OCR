@@ -33,7 +33,7 @@ namespace WFA.OCR.UserControls
 		{
 			ClearGenerateStatus();
 			
-			using (WaitForm form = new WaitForm(Generate))
+			using (WaitForm form = new WaitForm(SaveHotkey))
 			{
 				form.ShowDialog(this);
 			}
@@ -49,51 +49,60 @@ namespace WFA.OCR.UserControls
 		#endregion
 
 		#region method        
-		private void Generate()
+		private void SaveHotkey()
 		{
-			var dto = new OCRDA();
-			dto = ocr;
+			var da = new OCRDA();
 
-			try
-			{
-				dto.DTO.Model.GenerateType = OCRGenerateType.SaveHotkey;
-				
-				var a = (HotkeyDDL)ddlHotkey.Items[ddlHotkey.SelectedIndex];
-				dto.DTO.Model.HOTKEY = a.TEXT;
+			da.DTO.Model.GenerateType = OCRGenerateType.SaveHotkey;
 
-				dto.DTO.Model.HOTKEY_PATH = SessionHelper.SYS_CONFIG_PATH;
-				dto.DTO.Model.PATH = SessionHelper.SYS_PATH;
-				dto.Generate(ocr.DTO);
-			}
-			catch (Exception ex)
+			var a = (HotkeyDDL)ddlHotkey.Items[ddlHotkey.SelectedIndex];
+			da.DTO.Model.HOTKEY = a.TEXT;
+
+			da.DTO.Model.HOTKEY_PATH = SessionHelper.SYS_CONFIG_PATH;
+			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
+
+			var result = Generate(OCRGenerateType.SaveHotkey, da);
+			if (!result.IS_RESULT)
 			{
-				ocr.DTO.ErrorResults.ERROR_CODE = -1;
-				ocr.DTO.ErrorResults.ERROR_MESSAGE = ex.Message;
+				PluginHelper.MassageBox("Error", "Cann't Save file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
+				return;
 			}
 		}
 		private void SetDDL()
 		{
-			var dto = new OCRDA();
-			dto = ocr;
+			var da = new OCRDA();
 
-			try
-			{
-				dto.DTO.Model.GenerateType = OCRGenerateType.GetDDL;
-				dto.DTO.Model.HOTKEY_PATH = SessionHelper.SYS_CONFIG_PATH;
-				dto.DTO.Model.PATH = SessionHelper.SYS_PATH;
-				dto.Generate(ocr.DTO);
+			da.DTO.Model.GenerateType = OCRGenerateType.GetDDL;
+			da.DTO.Model.HOTKEY_PATH = SessionHelper.SYS_CONFIG_PATH;
+			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
 
-				ddlHotkey.SelectedValue = dto.DTO.Model.HOTKEY;
-			}
-			catch (Exception ex)
+			var result = Generate(OCRGenerateType.GetDDL, da);
+			if (!result.IS_RESULT)
 			{
-				ocr.DTO.ErrorResults.ERROR_CODE = -1;
-				ocr.DTO.ErrorResults.ERROR_MESSAGE = ex.Message;
+				PluginHelper.MassageBox("Error", "Cann't Read file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
+				return;
 			}
+
+			ddlHotkey.SelectedValue = da.DTO.Model.HOTKEY;
 		}
 		private void ClearGenerateStatus()
 		{
 			lblSaveStatus.Text = "";
+		}
+		private ErrorResults Generate(string action, OCRDA da)
+		{
+			switch (action)
+			{
+				case OCRGenerateType.GetDDL:
+					da.Generate(da.DTO);
+					break;
+				case OCRGenerateType.SaveHotkey:
+					da.Generate(da.DTO);
+					break;
+
+			}
+
+			return da.DTO.ErrorResults;
 		}
 		private void BuildDDL()
 		{
