@@ -51,7 +51,13 @@ namespace UtilityLib
 				return AppDomain.CurrentDomain.BaseDirectory + "Config";
 			}
 		}
-
+		public static string SYS_TESSDATA_PATH
+		{
+			get
+			{
+				return AppDomain.CurrentDomain.BaseDirectory + "TessData";
+			}
+		}
 
 	}
 }

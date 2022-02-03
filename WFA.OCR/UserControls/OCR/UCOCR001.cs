@@ -6,6 +6,8 @@ using WFA.PlugIn;
 using System.Diagnostics;
 using WFA.OCR.Helper;
 using UCControl.OCR;
+using UtilityLib;
+using System.Collections.Generic;
 
 namespace WFA.OCR.UserControls
 {
@@ -13,109 +15,127 @@ namespace WFA.OCR.UserControls
 	{
 		#region init
 		private OCRDA ocr = new OCRDA();
-		Overlay overly;
 
 		public UCOCR001()
 		{
 			InitializeComponent();
+			ComboBox.CheckForIllegalCrossThreadCalls = false;
 		}
 		private void UCOCR001_Load(object sender, EventArgs e)
 		{
-			BuildDDL();
+			BuildHotkeyDDL();
+			BuildLanguageDDL();
+			ReadHotkey();
 		}
 		#endregion
 
-		#region event
-		private void btnStartTranslate_Click(object sender, EventArgs e)
+		#region event	
+		private void btnDownloadLanguage_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				ClearGenerateStatus();
 
-				PluginHelper.MassageBox("Info", "Overlay is running.Please take your hotkey.", ButtonType.OK);
-				lblStartStatus.Text = "Ok here we go!";
-
-				overly = new Overlay(ddlProcessId.SelectedItem.ToString());
-				overly.Show();
-			}
-			catch (Exception err)
-			{
-				PluginHelper.MassageBox("Error", err.Message, ButtonType.OK);
-			}
 		}
-		private void ddlProcessId_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			//lblProcesssId.Text = "Connect process id complete";
-		}
-		private void btnExitOverly_Click(object sender, EventArgs e)
+		private void btnSave_Click(object sender, EventArgs e)
 		{
 			ClearGenerateStatus();
-			overly.Close();
-		}
-		private void btnReload_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				ClearGenerateStatus();
-				ddlProcessId.Items.Clear();
-				BuildDDL();
 
-				lblReloadStatus.Text = "Reload Complete!";
-			}
-			catch (Exception err)
+			using (WaitForm form = new WaitForm(SaveDropDown))
 			{
-				PluginHelper.MassageBox("Error", err.Message, ButtonType.OK);
+				form.ShowDialog(this);
 			}
 		}
 		#endregion
 
 		#region method        
-		private void Generate()
+		private ErrorResults Generate(string action, OCRDA da)
 		{
-			var dto = new OCRDA();
-			dto = ocr;
-
-			try
-			{
-				dto.DTO.Model.GenerateType = OCRGenerateType.xxx;
-				dto.Generate(ocr.DTO);
-				ocr.DTO.ErrorResults.ERROR_CODE = 0;
-			}
-			catch (Exception ex)
-			{
-				ocr.DTO.ErrorResults.ERROR_CODE = -1;
-				ocr.DTO.ErrorResults.ERROR_MESSAGE = ex.Message;
-			}
+			da.Generate(da.DTO);
+			return da.DTO.ErrorResults;
 		}
 		private void ClearGenerateStatus()
 		{
-			lblProcesssId.Text = "";
-			lblStartStatus.Text = "";
-			lblExitOverlyStatus.Text = "";
-			lblReloadStatus.Text = "";
+			lblDownloadStatus.Text = "";
+			lblSaveStatus.Text = "";
 		}
-		private void BuildDDL()
+		private void SaveDropDown()
 		{
-			Process[] processlist = Process.GetProcesses();
-			foreach (Process theprocess in processlist)
+			var da = new OCRDA();
+
+			da.DTO.Model.GenerateType = OCRGenerateType.SaveDropDown;
+			da.DTO.Model.HOTKEY = ((DropDownList)ddlHotkey.Items[ddlHotkey.SelectedIndex]).VALUE;
+			da.DTO.Model.SOURCE_LANG = ((DropDownList)ddlSourceLanguage.Items[ddlSourceLanguage.SelectedIndex]).VALUE;
+			da.DTO.Model.TARGET_LANG = ((DropDownList)ddlTargetLanguage.Items[ddlTargetLanguage.SelectedIndex]).VALUE;
+
+			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_CONFIG_PATH;
+			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
+
+			var result = Generate(OCRGenerateType.SaveDropDown, da);
+			if (!result.IS_RESULT)
 			{
-				if(!theprocess.MainWindowTitle.Equals(""))
-					ddlProcessId.Items.Add(theprocess.MainWindowTitle);
+				PluginHelper.MassageBox("Error", "Cann't Save file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
+				return;
 			}
 
-			if (ddlProcessId.Items.Count > 0)
-			{
-				ddlProcessId.SelectedText = processlist[0].MainWindowTitle;
-				ddlProcessId.SelectedIndex = 0;
-			}
-			else
-			{
-				ddlProcessId.Items.Add("Process Not Found!");
-				ddlProcessId.SelectedIndex = 0;
-			}
+			lblSaveStatus.Text = "Save Complete!";
 		}
+		private void ReadHotkey()
+		{
+			var da = new OCRDA();
+
+			da.DTO.Model.GenerateType = OCRGenerateType.GetDDL;
+			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_CONFIG_PATH;
+			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
+
+			var result = Generate(OCRGenerateType.GetDDL, da);
+			if (!result.IS_RESULT)
+			{
+				PluginHelper.MassageBox("Error", "Cann't Read file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
+				return;
+			}
+
+			ddlHotkey.SelectedValue = da.DTO.Model.HOTKEY;
+			ddlSourceLanguage.SelectedValue = da.DTO.Model.SOURCE_LANG;
+			ddlTargetLanguage.SelectedValue = da.DTO.Model.TARGET_LANG;
+		}
+		private void BuildHotkeyDDL()
+		{
+			List<DropDownList> models = new List<DropDownList>();
+			for (int i = 1; i <= 12; i++)
+			{
+				models.Add(new DropDownList { TEXT = "F" + i.ToString(), VALUE = "F" + i.ToString() });
+			}
+
+			ddlHotkey.ValueMember = "VALUE";
+			ddlHotkey.DisplayMember = "TEXT";
+			ddlHotkey.DataSource = models;
+			ddlHotkey.SelectedIndex = 0;
+		}
+		private void BuildLanguageDDL()
+		{
+			var da = new OCRDA();
+
+			da.DTO.Model.GenerateType = OCRGenerateType.GetLanguage;
+			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_TESSDATA_PATH;
+
+			var result = Generate(OCRGenerateType.GetLanguage, da);
+			if (!result.IS_RESULT)
+			{
+				PluginHelper.MassageBox("Error", "Cann't Read file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
+				return;
+			}
+
+			ddlSourceLanguage.ValueMember = "VALUE";
+			ddlSourceLanguage.DisplayMember = "TEXT";
+			ddlSourceLanguage.DataSource = da.DTO.Model.SOURCE_LANG_LIST;
+			ddlSourceLanguage.SelectedIndex = 0;
+
+			ddlTargetLanguage.ValueMember = "VALUE";
+			ddlTargetLanguage.DisplayMember = "TEXT";
+			ddlTargetLanguage.DataSource = da.DTO.Model.TARGET_LANG_LIST;
+			ddlTargetLanguage.SelectedIndex = 0;
+		}
+
 		#endregion
 
-		
+
 	}
 }

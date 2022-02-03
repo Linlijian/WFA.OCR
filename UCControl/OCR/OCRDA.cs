@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UtilityLib;
 
 namespace UCControl.OCR
@@ -22,8 +19,9 @@ namespace UCControl.OCR
 			switch (dto.Model.GenerateType)
 			{
 				case OCRGenerateType.xxx: return xxx(dto);
-				case OCRGenerateType.SaveHotkey: return SaveHotkey(dto);
+				case OCRGenerateType.SaveDropDown: return SaveDropDown(dto);
 				case OCRGenerateType.GetDDL: return GetDDL(dto);
+				case OCRGenerateType.GetLanguage: return GetLanguage(dto);
 			}
 			return dto;
 		}
@@ -34,12 +32,21 @@ namespace UCControl.OCR
 
 			return dto;
 		}
-		public OCRDTO GetDDL(OCRDTO dto)
+		public OCRDTO GetLanguage(OCRDTO dto)
 		{
-			if (IsPathExist(dto.Model.PATH))
+			if (IsPathExist(dto.Model.CONFIG_PATH))
 			{
-				var config = SplashScreenHelper.ReadConfig(dto.Model.HOTKEY_PATH);
-				dto.Model.HOTKEY = config.Where(x => x.Contains("Hotkey")).FirstOrDefault().Split(':').Last();
+				var config = IOHelper.ReadFolderTrainData(dto.Model.CONFIG_PATH);
+
+				dto.Model.SOURCE_LANG_LIST = new List<DropDownList>();
+				dto.Model.TARGET_LANG_LIST = new List<DropDownList>();
+
+				foreach (var item in config)
+				{
+					dto.Model.SOURCE_LANG_LIST.Add(new DropDownList { TEXT = IOHelper.GetTextLang(item), VALUE = item });
+					dto.Model.TARGET_LANG_LIST.Add(new DropDownList { TEXT = IOHelper.GetTextLang(item), VALUE = item });
+				}
+
 				dto.ErrorResults.IS_RESULT = true;
 			}
 			else
@@ -51,26 +58,51 @@ namespace UCControl.OCR
 
 			return dto;
 		}
-		public OCRDTO SaveHotkey(OCRDTO dto)
+		public OCRDTO GetDDL(OCRDTO dto)
 		{
 			if (IsPathExist(dto.Model.PATH))
 			{
-				var config = SplashScreenHelper.ReadConfig(dto.Model.HOTKEY_PATH);
-				var arr = config.Where(x => x.Contains("Hotkey")).FirstOrDefault();
-				string otkey = arr.Split(':').First() + ":" + dto.Model.HOTKEY;
+				var config = IOHelper.ReadConfig(dto.Model.CONFIG_PATH);
+				dto.Model.HOTKEY = config.Where(x => x.Contains("Hotkey")).FirstOrDefault().Split(':').Last();
+				dto.Model.SOURCE_LANG = config.Where(x => x.Contains("SourceLanguage")).FirstOrDefault().Split(':').Last();
+				dto.Model.TARGET_LANG = config.Where(x => x.Contains("TargetLanguage")).FirstOrDefault().Split(':').Last();
+				dto.ErrorResults.IS_RESULT = true;
+			}
+			else
+			{
+				dto.ErrorResults.IS_RESULT = false;
+				dto.ErrorResults.ERROR_CODE = -1;
+				dto.ErrorResults.ERROR_MESSAGE = "Not found folder!";
+			}
+
+			return dto;
+		}
+		public OCRDTO SaveDropDown(OCRDTO dto)
+		{
+			if (IsPathExist(dto.Model.PATH))
+			{
+				var config = IOHelper.ReadConfig(dto.Model.CONFIG_PATH);
+				var item_list = new List<string>();
+
+				item_list.Add((config.Where(x => x.Contains("Hotkey")).FirstOrDefault()).Split(':').First() + ":" + dto.Model.HOTKEY);
+				item_list.Add((config.Where(x => x.Contains("SourceLanguage")).FirstOrDefault()).Split(':').First() + ":" + dto.Model.SOURCE_LANG);
+				item_list.Add((config.Where(x => x.Contains("TargetLanguage")).FirstOrDefault()).Split(':').First() + ":" + dto.Model.TARGET_LANG);
 
 				int i = 0;
 				foreach (var item in config)
 				{
-					if (item.Equals(arr))
+					foreach (var lang in item_list)
 					{
-						config[i] = otkey;
-						break;
+						if (item.Contains(lang.Split(':').First()))
+						{
+							config[i] = lang;
+							break;
+						}
 					}
 					i++;
 				}
 
-				using (StreamWriter writer = new StreamWriter(dto.Model.HOTKEY_PATH))
+				using (StreamWriter writer = new StreamWriter(dto.Model.CONFIG_PATH))
 				{
 					foreach (var item in config)
 					{

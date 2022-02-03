@@ -35,7 +35,7 @@ namespace WFA.PlugIn
 				else
 				{
 					lblStatus.Text = "Create Folder Config";
-					string result = SplashScreenHelper.CreateConfig(SessionHelper.SYS_PATH, SessionHelper.SYS_CONFIG_PATH);
+					string result = IOHelper.CreateConfig(SessionHelper.SYS_PATH, SessionHelper.SYS_CONFIG_PATH);
 					if (!result.IsNullOrEmpty())
 					{
 						SetError(result, "000", "Fail");
@@ -63,24 +63,28 @@ namespace WFA.PlugIn
 		}
 		private bool ReadConfig()
 		{
-			string config = SplashScreenHelper.GetFile(SessionHelper.SYS_PATH);
+			string config = IOHelper.GetFile(SessionHelper.SYS_PATH);
 			if (config.IsNullOrEmpty())
 			{
 				lblStatus.Text = "Not found file ==> Create Folder Config";
-				string result = SplashScreenHelper.CreateFile(SessionHelper.SYS_CONFIG_PATH);
+				string result = IOHelper.CreateFile(SessionHelper.SYS_CONFIG_PATH);
 				if (!result.IsNullOrEmpty())
 				{
 					SetError(result, "000", "Fail");
 					return false;
 				}
 
-				config = SplashScreenHelper.GetFile(SessionHelper.SYS_PATH);
+				config = IOHelper.GetFile(SessionHelper.SYS_PATH);
 			}
 			
-			var arr = SplashScreenHelper.ReadConfig(config);
+			var arr = IOHelper.ReadConfig(config);
 
 			lblStatus.Text = "Load Hotkey";
 			SessionHelper.SYS_HOTKEY = arr.Where(a => a.Contains("Hotkey")).FirstOrDefault().Split(':').Last();
+
+			//check tessdata in file
+			lblStatus.Text = "Create Folder TessData";
+			IOHelper.CreateFolder(SessionHelper.SYS_TESSDATA_PATH);
 
 			return true;
 		}

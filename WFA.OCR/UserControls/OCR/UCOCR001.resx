@@ -117,4 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ucScrollbar1.DownArrowImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABUSURBVDhP3cvB
+        CQAhDETRNJgu0n8L6iA5GMYY9ObCg3XIl/G1B3Ssmj+qWvZbbGbLIdtpjAPnh2ynMTuM7zSOQQwhjWEX
+        wjEGFkIp3vklvkTHAmkdeKOeKymJcI4AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar1.ThumbBottomImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
+        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar1.ThumbBottomSpanImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
+        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar1.ThumbMiddleImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAAoCAYAAAAlinD5AAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABdSURBVEhLncjB
+        CQAgDMDA7r90dYDDgIH7ZG77gbNwFs7CWTgLZ+EsnIWzcBbOwlk4C2fhLJyFs3AWzsJZOAtn4SychbNw
+        Fs7CWTgLZ+EsnIWzcBbOwlk4C2fhfJg9M7YGFzm5A3EAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar1.ThumbTopImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
+        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar1.ThumbTopSpanImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
+        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar1.UpArrowImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABRSURBVDhP3YzR
+        CQAgCAVd0C3cfwUrQhB5ltSfwYFdXjSPfgBllT0wc5nOsYhAf41XaMS3Y+xD9EEaxyDe0xgtIg9jW7TZ
+        430aV+gSPwJlAdIBgfWeKzw5AuQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar2.DownArrowImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABUSURBVDhP3cvB
+        CQAhDETRNJgu0n8L6iA5GMYY9ObCg3XIl/G1B3Ssmj+qWvZbbGbLIdtpjAPnh2ynMTuM7zSOQQwhjWEX
+        wjEGFkIp3vklvkTHAmkdeKOeKymJcI4AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar2.ThumbBottomImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
+        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar2.ThumbBottomSpanImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
+        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar2.ThumbMiddleImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAAoCAYAAAAlinD5AAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABdSURBVEhLncjB
+        CQAgDMDA7r90dYDDgIH7ZG77gbNwFs7CWTgLZ+EsnIWzcBbOwlk4C2fhLJyFs3AWzsJZOAtn4SychbNw
+        Fs7CWTgLZ+EsnIWzcBbOwlk4C2fhfJg9M7YGFzm5A3EAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar2.ThumbTopImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
+        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar2.ThumbTopSpanImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAABCAYAAAAFKSQHAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAPSURBVBhXYwCC
+        /6Rhhv8AQ/8M9AFnVxEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucScrollbar2.UpArrowImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABRSURBVDhP3YzR
+        CQAgCAVd0C3cfwUrQhB5ltSfwYFdXjSPfgBllT0wc5nOsYhAf41XaMS3Y+xD9EEaxyDe0xgtIg9jW7TZ
+        430aV+gSPwJlAdIBgfWeKzw5AuQAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using Helper;
+using HotkeyManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +16,26 @@ namespace WFA.OCR
 	public partial class Overlay : Form
 	{
 		public string WINDOWN_TITLE { get; set; }
+		LocalHotKey lhkClearLog;
+		internal HotKeyManager MyHotKeyManager;
+		GlobalHotKey ghkNotepad;
 
 		public Overlay(string win_title)
 		{
-			WINDOWN_TITLE = win_title;
 			InitializeComponent();
+
+			WINDOWN_TITLE = win_title;
+			MyHotKeyManager = new HotKeyManager(this);
+			MyHotKeyManager.LocalHotKeyPressed += new LocalHotKeyEventHandler(MyHotKeyManager_LocalHotKeyPressed);
+
+			//load hotkey from file
+			lhkClearLog = new LocalHotKey("lhkClearLog", Keys.Escape);
+			lhkClearLog.Enabled = true;
+			MyHotKeyManager.AddLocalHotKey(lhkClearLog);
+			MyHotKeyManager.DisableOnManagerFormInactive = true;
+
+			//สร้าวโรปแกรมแสดงรูปเวลาแคปหน้าจอแล้วใส่ข้ความลงไปไม่ใช่ overal
+			//แต่เป็น from ธรรมดา
 		}
 
 		private void Overlay_Load(object sender, EventArgs e)
@@ -30,7 +46,7 @@ namespace WFA.OCR
 			this.BackColor = Color.Wheat;
 			this.TransparencyKey = Color.Wheat;
 			this.TopMost = true;
-			this.FormBorderStyle = FormBorderStyle.None;
+			//this.FormBorderStyle = FormBorderStyle.None;
 
 			int initialStyle = WinAPI.GetWindowLong(this.Handle, -20);
 			WinAPI.SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);
@@ -40,14 +56,6 @@ namespace WFA.OCR
 			this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
 			this.Top = rect.top;
 			this.Left = rect.left;
-
-			Panel panelOverly = CreatePanel();
-			CreateLabel(panelOverly, "test", 210, 41);
-			CreateLabel(panelOverly, "test1", 40, 140);
-			CreateLabel(panelOverly, "test2", 630, 240);
-			CreateLabel(panelOverly, "test3", 80, 340);
-			CreateLabel(panelOverly, "test4", 1100, 440);
-			Global.PDispose(panelOverly);
 		}
 
 		private void CreateLabel(Panel panelOverly, string text, int x, int y)
@@ -77,6 +85,45 @@ namespace WFA.OCR
 			this.Controls.Add(panelOverly);
 
 			return panelOverly;
+		}
+
+		private void Hotkeytest()
+		{
+			Panel panelOverly = CreatePanel();
+			CreateLabel(panelOverly, "test", 210, 41);
+			CreateLabel(panelOverly, "test1", 40, 140);
+			CreateLabel(panelOverly, "test2", 630, 240);
+			CreateLabel(panelOverly, "test3", 80, 340);
+			CreateLabel(panelOverly, "test4", 1100, 440);
+		}
+
+		private void TestTooltip()
+		{
+			ToolTip tt = new ToolTip();
+			IWin32Window win = this;
+			System.Drawing.Point mousePosition = Cursor.Position;
+			tt.Show("String\r\naaaaaaaaaaaaaaaaaaa", win, mousePosition);
+		}
+
+		void MyHotKeyManager_GlobalHotKeyPressed(object sender, GlobalHotKeyEventArgs e)
+		{
+			System.Diagnostics.Process.Start((e.HotKey.Tag as string));
+		}
+
+		void MyHotKeyManager_LocalHotKeyPressed(object sender, LocalHotKeyEventArgs e)
+		{
+			switch (e.HotKey.Name.ToLower())
+			{
+				
+				case "lhkclearlog":
+					TestTooltip();
+					return;
+
+				
+				default:
+					if (e.HotKey.Tag != null) System.Diagnostics.Process.Start((string)e.HotKey.Tag);
+					break;
+			}
 		}
 	}
 }

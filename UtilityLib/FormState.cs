@@ -14,7 +14,7 @@ namespace UtilityLib
         public string DupFile { get; set; }
     }
 
-	public class HotkeyDDL
+	public class DropDownList
 	{
 		public string TEXT { get; set; }
 		public string VALUE { get; set; }

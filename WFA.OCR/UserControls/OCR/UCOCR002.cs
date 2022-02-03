@@ -51,29 +51,14 @@ namespace WFA.OCR.UserControls
 		#region method        
 		private void SaveHotkey()
 		{
-			var da = new OCRDA();
-
-			da.DTO.Model.GenerateType = OCRGenerateType.SaveHotkey;
-
-			var a = (HotkeyDDL)ddlHotkey.Items[ddlHotkey.SelectedIndex];
-			da.DTO.Model.HOTKEY = a.TEXT;
-
-			da.DTO.Model.HOTKEY_PATH = SessionHelper.SYS_CONFIG_PATH;
-			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
-
-			var result = Generate(OCRGenerateType.SaveHotkey, da);
-			if (!result.IS_RESULT)
-			{
-				PluginHelper.MassageBox("Error", "Cann't Save file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
-				return;
-			}
+			
 		}
 		private void SetDDL()
 		{
 			var da = new OCRDA();
 
 			da.DTO.Model.GenerateType = OCRGenerateType.GetDDL;
-			da.DTO.Model.HOTKEY_PATH = SessionHelper.SYS_CONFIG_PATH;
+			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_CONFIG_PATH;
 			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
 
 			var result = Generate(OCRGenerateType.GetDDL, da);
@@ -96,9 +81,7 @@ namespace WFA.OCR.UserControls
 				case OCRGenerateType.GetDDL:
 					da.Generate(da.DTO);
 					break;
-				case OCRGenerateType.SaveHotkey:
-					da.Generate(da.DTO);
-					break;
+				
 
 			}
 
@@ -106,10 +89,10 @@ namespace WFA.OCR.UserControls
 		}
 		private void BuildDDL()
 		{
-			List<HotkeyDDL> models = new List<HotkeyDDL>();
+			List<DropDownList> models = new List<DropDownList>();
 			for (int i = 1; i <= 12; i++)
 			{
-				models.Add(new HotkeyDDL { TEXT = "F" + i.ToString(), VALUE = "F" + i.ToString() });
+				models.Add(new DropDownList { TEXT = "F" + i.ToString(), VALUE = "F" + i.ToString() });
 			}
 
 			ddlHotkey.ValueMember = "VALUE";
