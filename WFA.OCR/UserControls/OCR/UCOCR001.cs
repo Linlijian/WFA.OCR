@@ -32,7 +32,23 @@ namespace WFA.OCR.UserControls
 		#region event	
 		private void btnDownloadLanguage_Click(object sender, EventArgs e)
 		{
+			//download
 
+			//bind ddl all lang
+			//var da = new OCRDA();
+
+			//da.DTO.Model.GenerateType = OCRGenerateType.GetLanguage;
+			//da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_TESSDATA_PATH;
+
+			//var result = Generate(OCRGenerateType.GetLanguage, da);
+			//if (!result.IS_RESULT)
+			//{
+			//	PluginHelper.MassageBox("Error", "Cann't Read file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
+			//	return;
+			//}
+
+			//enabled btn save
+			//clear lbl save
 		}
 		private void btnSave_Click(object sender, EventArgs e)
 		{
@@ -112,26 +128,36 @@ namespace WFA.OCR.UserControls
 		private void BuildLanguageDDL()
 		{
 			var da = new OCRDA();
-
-			da.DTO.Model.GenerateType = OCRGenerateType.GetLanguage;
-			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_TESSDATA_PATH;
-
-			var result = Generate(OCRGenerateType.GetLanguage, da);
-			if (!result.IS_RESULT)
+			da.DTO.Model.SOURCE_LANG_LIST = SessionHelper.SYS_SOU_LANGUAGE;
+			da.DTO.Model.TARGET_LANG_LIST = SessionHelper.SYS_TAR_LANGUAGE;
+			
+			if (da.DTO.Model.SOURCE_LANG_LIST.Count > 0)
 			{
-				PluginHelper.MassageBox("Error", "Cann't Read file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
-				return;
+				ddlSourceLanguage.ValueMember = "VALUE";
+				ddlSourceLanguage.DisplayMember = "TEXT";
+				ddlSourceLanguage.DataSource = da.DTO.Model.SOURCE_LANG_LIST;
+				ddlSourceLanguage.SelectedIndex = 0;
+			}
+			else
+			{
+				btnSave.Enabled = false;
+				ddlSourceLanguage.Enabled = false;
+				lblSaveStatus.Text = "Error 404 Data not found!";
 			}
 
-			ddlSourceLanguage.ValueMember = "VALUE";
-			ddlSourceLanguage.DisplayMember = "TEXT";
-			ddlSourceLanguage.DataSource = da.DTO.Model.SOURCE_LANG_LIST;
-			ddlSourceLanguage.SelectedIndex = 0;
-
-			ddlTargetLanguage.ValueMember = "VALUE";
-			ddlTargetLanguage.DisplayMember = "TEXT";
-			ddlTargetLanguage.DataSource = da.DTO.Model.TARGET_LANG_LIST;
-			ddlTargetLanguage.SelectedIndex = 0;
+			if (da.DTO.Model.TARGET_LANG_LIST.Count > 0)
+			{
+				ddlTargetLanguage.ValueMember = "VALUE";
+				ddlTargetLanguage.DisplayMember = "TEXT";
+				ddlTargetLanguage.DataSource = da.DTO.Model.TARGET_LANG_LIST;
+				ddlTargetLanguage.SelectedIndex = 0;
+			}
+			else
+			{
+				btnSave.Enabled = false;
+				ddlTargetLanguage.Enabled = false;
+				lblSaveStatus.Text = "Error 404 Data not found!";
+			}
 		}
 
 		#endregion

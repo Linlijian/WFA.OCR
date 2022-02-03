@@ -46,6 +46,29 @@ namespace WFA.PlugIn
 					if (!ReadConfig()) return;
 				}
 
+				#region load ddl
+				lblStatus.Text = "Load DropdownList from Tessdata";
+				if (Directory.Exists(SessionHelper.SYS_TESSDATA_PATH))
+				{
+					var config = IOHelper.ReadFolderTrainData(SessionHelper.SYS_TESSDATA_PATH);
+					var sou_lang = new List<DropDownList>();
+					var tar_lang = new List<DropDownList>();
+
+					foreach (var item in config)
+					{
+						sou_lang.Add(new DropDownList { TEXT = IOHelper.GetTextLang(item), VALUE = item });
+						tar_lang.Add(new DropDownList { TEXT = IOHelper.GetTextLang(item), VALUE = item });
+					}
+
+					SessionHelper.SYS_SOU_LANGUAGE = sou_lang;
+					SessionHelper.SYS_TAR_LANGUAGE = tar_lang;
+				}
+				else
+				{
+					SetError(lblStatus.Text, "000", "Fail");
+				}
+				#endregion
+
 				SessionHelper.SYS_START_UP = true;
 			}
 			catch (Exception e)

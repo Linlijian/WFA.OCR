@@ -32,11 +32,13 @@ namespace UtilityLib
         public static string XML_DUP_FILE;
 
 
-		public static string TRANS_PATHDATA;
-		public static string TRANS_LANGUAGE_FROM;
-		public static string TRANS_LANGUAGE_TO;
-		public static string TRANS_LANGUAGE;
+		//public static string TRANS_PATHDATA;
+		//public static string TRANS_LANGUAGE_FROM;
+		//public static string TRANS_LANGUAGE_TO;
+		//public static string TRANS_LANGUAGE;
 
+		public static List<DropDownList> SYS_SOU_LANGUAGE;
+		public static List<DropDownList> SYS_TAR_LANGUAGE;
 		public static string SYS_HOTKEY;
 		public static string SYS_CONFIG_PATH
 		{
