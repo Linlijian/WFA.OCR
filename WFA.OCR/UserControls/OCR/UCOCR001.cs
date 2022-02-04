@@ -14,6 +14,7 @@ namespace WFA.OCR.UserControls
 {
 	public partial class UCOCR001 : UserControl
 	{
+
 		#region init
 		private OCRDA ocr = new OCRDA();
 
@@ -27,6 +28,12 @@ namespace WFA.OCR.UserControls
 			BuildHotkeyDDL();
 			BuildLanguageDDL();
 			ReadHotkey();
+
+			if (!btnSave.Enabled)
+			{
+				ddlHotkey.Enabled = false;
+				PluginHelper.MassageBox("Info", "Before using for the first time, download the desired language.", ButtonType.OK);
+			}
 		}
 		#endregion
 
@@ -47,7 +54,10 @@ namespace WFA.OCR.UserControls
 			//	PluginHelper.MassageBox("Error", "Cann't Read file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
 			//	return;
 			//}
+			//
+			//EnabledDropDownList();
 
+			//register hotkey
 			//enabled btn save
 			//clear lbl save
 		}
@@ -59,6 +69,9 @@ namespace WFA.OCR.UserControls
 			{
 				form.ShowDialog(this);
 			}
+		}
+		private void ddlHotkey_SelectionChangeCommitted(object sender, EventArgs e)
+		{
 		}
 		#endregion
 
@@ -72,6 +85,12 @@ namespace WFA.OCR.UserControls
 		{
 			lblDownloadStatus.Text = "";
 			lblSaveStatus.Text = "";
+		}
+		private void EnabledDropDownList()
+		{
+			ddlHotkey.Enabled = true;
+			ddlSourceLanguage.Enabled = true;
+			ddlTargetLanguage.Enabled = true;
 		}
 		private void SaveDropDown()
 		{
@@ -166,8 +185,10 @@ namespace WFA.OCR.UserControls
 			}
 		}
 
+
+
 		#endregion
 
-
+		
 	}
 }

@@ -109,11 +109,15 @@ namespace WFA.OCR
 
 				MyHotKeyManager = new HotKeyManager(this);
 				MyHotKeyManager.LocalHotKeyPressed += new LocalHotKeyEventHandler(KCaptureAreaHotkey);
-				KCaptureArea = new LocalHotKey("KCaptureArea", SessionHelper.SYS_HOTKEY.KeyEmun());
-				KCaptureArea.Enabled = true;
-				MyHotKeyManager.AddLocalHotKey(KCaptureArea);
 				MyHotKeyManager.DisableOnManagerFormInactive = true;
-				
+
+				if (!SessionHelper.SYS_HOTKEY.IsNullOrEmpty())
+				{
+					KCaptureArea = new LocalHotKey("KCaptureArea", SessionHelper.SYS_HOTKEY.KeyEmun());
+					MyHotKeyManager.AddLocalHotKey(KCaptureArea);
+					KCaptureArea.Enabled = true;
+				}
+
 				UserControlHelper.SetUserControl(panelClientBody, userControl: new UCClientBody(), dockStyle: UserControlDockStyle.DockStyleFill);
             }  
         }

@@ -283,6 +283,7 @@
 			this.ddlHotkey.Name = "ddlHotkey";
 			this.ddlHotkey.Size = new System.Drawing.Size(290, 27);
 			this.ddlHotkey.TabIndex = 30;
+			this.ddlHotkey.SelectionChangeCommitted += new System.EventHandler(this.ddlHotkey_SelectionChangeCommitted);
 			// 
 			// lblToppic
 			// 

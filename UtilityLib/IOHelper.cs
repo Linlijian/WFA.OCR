@@ -85,8 +85,9 @@ namespace UtilityLib
 		{
 			using (StreamWriter writer = new StreamWriter(_path))
 			{
-				writer.WriteLine("Hotkey:F1");
-				writer.WriteLine("test:test_text");
+				writer.WriteLine("Hotkey:");
+				writer.WriteLine("SourceLanguage:");
+				writer.WriteLine("TargetLanguage:");
 			}
 		}
 
