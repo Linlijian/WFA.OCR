@@ -16,11 +16,20 @@ namespace WFA.PlugIn
 {
     public partial class SplashScreen : Form
     {
-        public SplashScreen()
+		public Action Worker { get; set; }
+		public SplashScreen(Action _worker)
         {
             InitializeComponent();
             VerifyStartUp();
-        }
+			if (_worker == null)
+				throw new ArgumentNullException();
+			Worker = _worker;
+		}
+		protected override void OnLoad(EventArgs e)
+		{
+			base.OnLoad(e);
+			Task.Factory.StartNew(Worker).ContinueWith(t => { this.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
+		}
 		private void VerifyStartUp()
 		{
 			try
@@ -56,16 +65,39 @@ namespace WFA.PlugIn
 
 					foreach (var item in config)
 					{
-						sou_lang.Add(new DropDownList { TEXT = IOHelper.GetTextLang(item), VALUE = item });
 						tar_lang.Add(new DropDownList { TEXT = IOHelper.GetTextLang(item), VALUE = item });
 					}
+					SessionHelper.SYS_TAR_LANGUAGES = tar_lang;
 
-					SessionHelper.SYS_SOU_LANGUAGE = sou_lang;
-					SessionHelper.SYS_TAR_LANGUAGE = tar_lang;
+					foreach (var item in SessionHelper.SYS_GOOGLE_LANGUAGES.Split(new string[] { "\r\n", ";" }, StringSplitOptions.None))
+					{
+						if (!item.IsNullOrEmpty())
+						{
+							var values = item.Split(':');
+							sou_lang.Add(new DropDownList
+							{
+								TEXT = values[0],
+								VALUE = values[1],
+								REMARK = values[2]
+							});
+						}
+					}
+
+					SessionHelper.SYS_SOU_LANGUAGES = sou_lang.Where(s => !s.REMARK.IsNullOrEmpty()).ToList();
 				}
 				else
 				{
 					SetError(lblStatus.Text, "000", "Fail");
+					return;
+				}
+				#endregion
+
+				#region load file tassdata
+				lblStatus.Text = "Load TainData from Tessdata";
+				if (!Directory.Exists(SessionHelper.SYS_TESSDATA_PATH))
+				{
+					SetError(lblStatus.Text, "000", "Fail");
+					return;
 				}
 				#endregion
 
@@ -74,6 +106,7 @@ namespace WFA.PlugIn
 			catch (Exception e)
 			{
 				SetError(lblStatus.Text + " " + e.Message, "001", "Error");
+				return;
 			}
         }
 
@@ -104,6 +137,15 @@ namespace WFA.PlugIn
 
 			lblStatus.Text = "Load Hotkey";
 			SessionHelper.SYS_HOTKEY = arr.Where(a => a.Contains("Hotkey")).FirstOrDefault().Split(':').Last();
+
+			lblStatus.Text = "Load Source Language";
+			SessionHelper.SYS_SOU_LANGUAGE = arr.Where(a => a.Contains("SourceLanguage")).FirstOrDefault().Split(':').Last();
+
+			lblStatus.Text = "Load Target Language";
+			SessionHelper.SYS_TAR_LANGUAGE = arr.Where(a => a.Contains("TargetLanguage")).FirstOrDefault().Split(':').Last();
+
+			lblStatus.Text = "Load Google Language";
+			SessionHelper.SYS_GOO_LANGUAGE = arr.Where(a => a.Contains("GoogleLanguage")).FirstOrDefault().Split(':').Last();
 
 			//check tessdata in file
 			lblStatus.Text = "Create Folder TessData";

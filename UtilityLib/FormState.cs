@@ -18,5 +18,6 @@ namespace UtilityLib
 	{
 		public string TEXT { get; set; }
 		public string VALUE { get; set; }
+		public string REMARK { get; set; }
 	}
 }

@@ -15,6 +15,7 @@ namespace UCControl.OCR
 		public string HOTKEY { get; set; }
 		public string TARGET_LANG { get; set; }
 		public string SOURCE_LANG { get; set; }
+		public string GOOGLE_LANG { get; set; }
 		public string CONFIG_PATH { get; set; }
 		public string PATH { get; set; }
 

@@ -72,16 +72,24 @@ namespace WFA.OCR
 
 		public MainForm()
         {
-            Thread t = new Thread(new ThreadStart(StartUp));
-            t.Start();
-            Thread.Sleep(2000);
-            InitializeComponent();
-            Thread.Sleep(10);
-            t.Abort();
-        }
+			//Thread t = new Thread(new ThreadStart(StartUp));
+			//t.Start();
+			//Thread.Sleep(2000);
+			//InitializeComponent();
+			//Thread.Sleep(10);
+			//t.Abort();
+
+			using (SplashScreen form = new SplashScreen(StartUp))
+			{
+				form.ShowDialog(this);
+			}
+
+
+			InitializeComponent();
+		}
         public void StartUp()
         {
-            Application.Run(new SplashScreen());
+            //Application.Run(new SplashScreen());
         }
         #endregion
 
@@ -145,7 +153,10 @@ namespace WFA.OCR
 			{
 
 				case "KCAPTUREAREA":
-					MessageBox.Show("aaaaaaa");
+					this.Hide();
+					//Form1 form1 = new Form1();
+					//form1.InstanceRef = this;
+					//form1.Show();
 					return;
 
 

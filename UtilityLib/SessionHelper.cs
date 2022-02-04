@@ -37,9 +37,15 @@ namespace UtilityLib
 		//public static string TRANS_LANGUAGE_TO;
 		//public static string TRANS_LANGUAGE;
 
-		public static List<DropDownList> SYS_SOU_LANGUAGE;
-		public static List<DropDownList> SYS_TAR_LANGUAGE;
+		public static string SYS_SOU_LANGUAGE;
+		public static string SYS_TAR_LANGUAGE;
+		public static string SYS_GOO_LANGUAGE;
+		public static List<DropDownList> SYS_SOU_LANGUAGES; // google lang code
+		public static List<DropDownList> SYS_TAR_LANGUAGES; // train tassdata
 		public static string SYS_HOTKEY;
+		public static string SYS_TESSDATA;
+
+
 		public static string SYS_CONFIG_PATH
 		{
 			get {
@@ -60,6 +66,13 @@ namespace UtilityLib
 				return AppDomain.CurrentDomain.BaseDirectory + "TessData";
 			}
 		}
-
+		public static string SYS_GOOGLE_LANGUAGES
+		{
+			get
+			{
+				// language : google code : train data code
+				return "Amharic:am:amh;\r\nArabic:ar:ara;\r\nBengali:bn:ben;\r\nEnglish:en:eng;\r\nPortuguese:pt-BR:por;\r\nBulgarian:bg:bul;\r\nCatalan:ca:cat;\r\nCherokee:chr:chr;\r\nChinese - Simplified:zh-CN:chi_sim;\r\nChinese - Traditional:zh-TW:chi_tra;\r\nDanish:da:dan;\r\nEstonian:et:est;\r\nFinnish:fi:fin;\r\nFrench:fr:fra;\r\nGerman:de:frk;\r\nGreek:el:grc;\r\nGujarati:gu:guj;\r\nHebrew:iw:heb;\r\nHindi:hi:hin;\r\nHungarian:hu:hun;\r\nIcelandic:is:isl;\r\nIndonesian:id:ind;\r\nItalian:it:ita;\r\nJapanese:ja:jpn;\r\nKannada:kn:kan;\r\nKorean:ko:kor;\r\nLatvian:lv:lav;\r\nLithuanian:lt:lit;\r\nMalay:ms:msa;\r\nMalayalam:ml:mal;\r\nMarathi:mr:mar;\r\nNorwegian:no:nor;\r\nPolish:pl:pol;\r\nRomanian:ro:ron;\r\nRussian:ru:rus;\r\nSerbian:sr:srp;\r\nSlovak:sk:slk;\r\nSlovenian:sl:slv;\r\nSpanish:es:spa;\r\nSwahili:sw:swa;\r\nSwedish:sv:swe;\r\nTamil:ta:tam;\r\nTelugu:te:tel;\r\nThai:th:tha;\r\nTurkish:tr:tur;\r\nUrdu:ur:urd;\r\nUkrainian:uk:ukr;\r\nVietnamese:vi:vie;\r\nWelsh:cy:cym;\r\n";
+			}
+		}
 	}
 }

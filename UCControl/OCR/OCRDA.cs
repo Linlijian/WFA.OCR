@@ -66,6 +66,7 @@ namespace UCControl.OCR
 				dto.Model.HOTKEY = config.Where(x => x.Contains("Hotkey")).FirstOrDefault().Split(':').Last();
 				dto.Model.SOURCE_LANG = config.Where(x => x.Contains("SourceLanguage")).FirstOrDefault().Split(':').Last();
 				dto.Model.TARGET_LANG = config.Where(x => x.Contains("TargetLanguage")).FirstOrDefault().Split(':').Last();
+				dto.Model.GOOGLE_LANG = config.Where(x => x.Contains("GoogleLanguage")).FirstOrDefault().Split(':').Last();
 				dto.ErrorResults.IS_RESULT = true;
 			}
 			else
@@ -87,6 +88,7 @@ namespace UCControl.OCR
 				item_list.Add((config.Where(x => x.Contains("Hotkey")).FirstOrDefault()).Split(':').First() + ":" + dto.Model.HOTKEY);
 				item_list.Add((config.Where(x => x.Contains("SourceLanguage")).FirstOrDefault()).Split(':').First() + ":" + dto.Model.SOURCE_LANG);
 				item_list.Add((config.Where(x => x.Contains("TargetLanguage")).FirstOrDefault()).Split(':').First() + ":" + dto.Model.TARGET_LANG);
+				item_list.Add((config.Where(x => x.Contains("GoogleLanguage")).FirstOrDefault()).Split(':').First() + ":" + dto.Model.GOOGLE_LANG);
 
 				int i = 0;
 				foreach (var item in config)

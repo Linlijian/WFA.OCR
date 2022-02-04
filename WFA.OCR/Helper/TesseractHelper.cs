@@ -7,23 +7,39 @@ using System.Web.Script.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace Helper
 {
 	public class TesseractHelper
 	{
-		public void Translate(Image _image, string _path, string _language)
+		Image image;
+		public TesseractHelper(Image _image)
 		{
-			Bitmap screen_image = (Bitmap)_image;
-			using (var image = new Image<Bgr, byte>(screen_image))
+			image = _image;
+		}
+
+		public void Translate(string _path, string _souLang, string _tarLang, string _gooLang)
+		{
+			try
 			{
-				using (var tess = new Tesseract(_path, _language, OcrEngineMode.TesseractLstmCombined))
+				Bitmap screen_image = (Bitmap)image;
+				using (var image = new Image<Bgr, byte>(screen_image))
 				{
-					tess.SetImage(image);
-					var text = tess.GetUTF8Text().TrimEnd();
-					var ch = tess.GetCharacters();
-					string trans = TranslateText("Hello", "en", "ja");
+					using (var tess = new Tesseract(_path, _tarLang, OcrEngineMode.TesseractLstmCombined))
+					{
+						tess.SetImage(image);
+						var text = tess.GetUTF8Text().TrimEnd();
+						var ch = tess.GetCharacters();
+						string trans = TranslateText("Hello", "en", "ja");
+					}
 				}
+			}
+			catch (Exception)
+			{
+
+				throw;
 			}
 		}
 
@@ -51,6 +67,63 @@ namespace Helper
 			if (translation.Length > 1) { translation = translation.Substring(1); };
 
 			return translation;
+		}
+
+		public static Image CaptureImage(bool showCursor, Size curSize, Point curPos, Point SourcePoint, Point DestinationPoint, Rectangle SelectionRectangle)
+		{
+			using (Bitmap bitmap = new Bitmap(SelectionRectangle.Width, SelectionRectangle.Height))
+			{
+				using (Graphics g = Graphics.FromImage(bitmap))
+				{
+					g.CopyFromScreen(SourcePoint, DestinationPoint, SelectionRectangle.Size);
+
+					if (showCursor)
+					{
+						Rectangle cursorBounds = new Rectangle(curPos, curSize);
+						Cursors.Default.Draw(g, cursorBounds);
+					}
+				}
+
+				return (Image)bitmap;
+			}
+		}
+		public static void CaptureImage(bool showCursor, Size curSize, Point curPos, Point SourcePoint, Point DestinationPoint, Rectangle SelectionRectangle, string FilePath, string extension)
+		{
+			using (Bitmap bitmap = new Bitmap(SelectionRectangle.Width, SelectionRectangle.Height))
+			{
+				using (Graphics g = Graphics.FromImage(bitmap))
+				{
+					g.CopyFromScreen(SourcePoint, DestinationPoint, SelectionRectangle.Size);
+
+					if (showCursor)
+					{
+						Rectangle cursorBounds = new Rectangle(curPos, curSize);
+						Cursors.Default.Draw(g, cursorBounds);
+					}
+				}
+
+				switch (extension)
+				{
+					case ".bmp":
+						bitmap.Save(FilePath, ImageFormat.Bmp);
+						break;
+					case ".jpg":
+						bitmap.Save(FilePath, ImageFormat.Jpeg);
+						break;
+					case ".gif":
+						bitmap.Save(FilePath, ImageFormat.Gif);
+						break;
+					case ".tiff":
+						bitmap.Save(FilePath, ImageFormat.Tiff);
+						break;
+					case ".png":
+						bitmap.Save(FilePath, ImageFormat.Png);
+						break;
+					default:
+						bitmap.Save(FilePath, ImageFormat.Jpeg);
+						break;
+				}
+			}
 		}
 	}
 

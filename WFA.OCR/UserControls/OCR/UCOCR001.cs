@@ -101,6 +101,9 @@ namespace WFA.OCR.UserControls
 			da.DTO.Model.SOURCE_LANG = ((DropDownList)ddlSourceLanguage.Items[ddlSourceLanguage.SelectedIndex]).VALUE;
 			da.DTO.Model.TARGET_LANG = ((DropDownList)ddlTargetLanguage.Items[ddlTargetLanguage.SelectedIndex]).VALUE;
 
+			var index = ddlSourceLanguage.FindString(((DropDownList)ddlTargetLanguage.Items[ddlTargetLanguage.SelectedIndex]).TEXT);
+			da.DTO.Model.GOOGLE_LANG = ((DropDownList)ddlSourceLanguage.Items[index]).VALUE;
+
 			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_CONFIG_PATH;
 			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
 
@@ -115,6 +118,11 @@ namespace WFA.OCR.UserControls
 			MainForm.Instance.KCaptureArea = new LocalHotKey("KCaptureArea", da.DTO.Model.HOTKEY.KeyEmun());
 			MainForm.Instance.MyHotKeyManager.RemoveLocalHotKey(MainForm.Instance.KCaptureArea);
 			MainForm.Instance.MyHotKeyManager.AddLocalHotKey(MainForm.Instance.KCaptureArea);
+
+			//load new session
+			SessionHelper.SYS_SOU_LANGUAGE = da.DTO.Model.SOURCE_LANG;
+			SessionHelper.SYS_TAR_LANGUAGE = da.DTO.Model.TARGET_LANG;
+			SessionHelper.SYS_GOO_LANGUAGE = da.DTO.Model.GOOGLE_LANG;
 
 			lblSaveStatus.Text = "Save Complete!";
 		}
@@ -153,8 +161,8 @@ namespace WFA.OCR.UserControls
 		private void BuildLanguageDDL()
 		{
 			var da = new OCRDA();
-			da.DTO.Model.SOURCE_LANG_LIST = SessionHelper.SYS_SOU_LANGUAGE;
-			da.DTO.Model.TARGET_LANG_LIST = SessionHelper.SYS_TAR_LANGUAGE;
+			da.DTO.Model.SOURCE_LANG_LIST = SessionHelper.SYS_SOU_LANGUAGES;
+			da.DTO.Model.TARGET_LANG_LIST = SessionHelper.SYS_TAR_LANGUAGES;
 			
 			if (da.DTO.Model.SOURCE_LANG_LIST.Count > 0)
 			{
