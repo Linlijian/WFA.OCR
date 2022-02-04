@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace UtilityLib
 {
@@ -291,5 +292,18 @@ namespace UtilityLib
             Thread.CurrentThread.CurrentCulture = culture;
             return newDate;
         }
-    }
+
+		/// <summary>
+		/// แปลง string เป็น System.Windows.Forms.Keys
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns>keys emun</returns>
+		public static Keys KeyEmun(this object data)
+		{
+			KeysConverter keyconverter = new KeysConverter();
+			Keys key = 0;
+			key = (Keys)keyconverter.ConvertFrom(data.ToString());
+			return key;
+		}
+	}
 }

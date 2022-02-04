@@ -8,6 +8,7 @@ using WFA.OCR.Helper;
 using UCControl.OCR;
 using UtilityLib;
 using System.Collections.Generic;
+using HotkeyManagement;
 
 namespace WFA.OCR.UserControls
 {
@@ -90,6 +91,11 @@ namespace WFA.OCR.UserControls
 				PluginHelper.MassageBox("Error", "Cann't Save file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
 				return;
 			}
+
+			//set hoekey
+			MainForm.Instance.KCaptureArea = new LocalHotKey("KCaptureArea", da.DTO.Model.HOTKEY.KeyEmun());
+			MainForm.Instance.MyHotKeyManager.RemoveLocalHotKey(MainForm.Instance.KCaptureArea);
+			MainForm.Instance.MyHotKeyManager.AddLocalHotKey(MainForm.Instance.KCaptureArea);
 
 			lblSaveStatus.Text = "Save Complete!";
 		}

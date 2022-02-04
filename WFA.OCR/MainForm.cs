@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using UtilityLib;
 using WFA.OCR.UserControls;
 using WFA.PlugIn;
+using HotkeyManagement;
 
 namespace WFA.OCR
 {
@@ -55,7 +56,21 @@ namespace WFA.OCR
             set { panelTitle = value; }
         }
 
-        public MainForm()
+		public LocalHotKey _KCaptureArea = null;
+		public LocalHotKey KCaptureArea
+		{
+			get { return _KCaptureArea; }
+			set { _KCaptureArea = value; }
+		}
+
+		internal HotKeyManager _MyHotKeyManager;
+		public HotKeyManager MyHotKeyManager
+		{
+			get { return _MyHotKeyManager; }
+			set { _MyHotKeyManager = value; }
+		}
+
+		public MainForm()
         {
             Thread t = new Thread(new ThreadStart(StartUp));
             t.Start();
@@ -91,7 +106,15 @@ namespace WFA.OCR
             else
             {
                 _obj = this;
-                UserControlHelper.SetUserControl(panelClientBody, userControl: new UCClientBody(), dockStyle: UserControlDockStyle.DockStyleFill);
+
+				MyHotKeyManager = new HotKeyManager(this);
+				MyHotKeyManager.LocalHotKeyPressed += new LocalHotKeyEventHandler(KCaptureAreaHotkey);
+				KCaptureArea = new LocalHotKey("KCaptureArea", SessionHelper.SYS_HOTKEY.KeyEmun());
+				KCaptureArea.Enabled = true;
+				MyHotKeyManager.AddLocalHotKey(KCaptureArea);
+				MyHotKeyManager.DisableOnManagerFormInactive = true;
+				
+				UserControlHelper.SetUserControl(panelClientBody, userControl: new UCClientBody(), dockStyle: UserControlDockStyle.DockStyleFill);
             }  
         }
         #endregion
@@ -101,15 +124,32 @@ namespace WFA.OCR
         {
             this.Close();
         }
-        #endregion
+		private void btnHome_Click(object sender, EventArgs e)
+		{
+			PnlClientBody.Controls["UCClientBody"].BringToFront();
+		}
+		#endregion
 
-        #region panel
+		#region panel
 
-        #endregion
+		#endregion
 
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            PnlClientBody.Controls["UCClientBody"].BringToFront();
-        }
-    }
+		#region even
+		public void KCaptureAreaHotkey(object sender, LocalHotKeyEventArgs e)
+		{
+			switch (e.HotKey.Name.ToUpper())
+			{
+
+				case "KCAPTUREAREA":
+					MessageBox.Show("aaaaaaa");
+					return;
+
+
+				default:
+					if (e.HotKey.Tag != null) System.Diagnostics.Process.Start((string)e.HotKey.Tag);
+					break;
+			}
+		}
+		#endregion
+	}
 }
