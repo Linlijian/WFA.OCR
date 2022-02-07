@@ -10,6 +10,7 @@ namespace WFA.OCR.UserControls
 		public UCClientOcr()
 		{
 			InitializeComponent();
+			panelSetting.Hide(); // hide menu setting
 			HideActive();
 		}
 		public void HideActive()

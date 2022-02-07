@@ -107,7 +107,7 @@
 			this.ddlTargetLanguage.Font = new System.Drawing.Font("Itim", 12F);
 			this.ddlTargetLanguage.ForeColor = System.Drawing.Color.White;
 			this.ddlTargetLanguage.FormattingEnabled = true;
-			this.ddlTargetLanguage.Location = new System.Drawing.Point(27, 224);
+			this.ddlTargetLanguage.Location = new System.Drawing.Point(27, 153);
 			this.ddlTargetLanguage.Name = "ddlTargetLanguage";
 			this.ddlTargetLanguage.Size = new System.Drawing.Size(290, 27);
 			this.ddlTargetLanguage.TabIndex = 44;
@@ -131,7 +131,7 @@
 			this.ddlSourceLanguage.Font = new System.Drawing.Font("Itim", 12F);
 			this.ddlSourceLanguage.ForeColor = System.Drawing.Color.White;
 			this.ddlSourceLanguage.FormattingEnabled = true;
-			this.ddlSourceLanguage.Location = new System.Drawing.Point(27, 153);
+			this.ddlSourceLanguage.Location = new System.Drawing.Point(27, 224);
 			this.ddlSourceLanguage.Name = "ddlSourceLanguage";
 			this.ddlSourceLanguage.Size = new System.Drawing.Size(290, 27);
 			this.ddlSourceLanguage.TabIndex = 42;

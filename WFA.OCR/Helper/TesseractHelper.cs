@@ -9,34 +9,35 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace Helper
 {
 	public class TesseractHelper
 	{
-		Image image;
-		public TesseractHelper(Image _image)
+		string image_apth;
+		public TesseractHelper()
 		{
-			image = _image;
+			image_apth = Path.GetTempPath() + "CaptureImage.bmp";
 		}
 
 		public void Translate(string _path, string _souLang, string _tarLang, string _gooLang)
 		{
 			try
 			{
-				Bitmap screen_image = (Bitmap)image;
-				using (var image = new Image<Bgr, byte>(screen_image))
+				using (var image = new Image<Bgr, byte>(image_apth))
 				{
 					using (var tess = new Tesseract(_path, _tarLang, OcrEngineMode.TesseractLstmCombined))
 					{
 						tess.SetImage(image);
 						var text = tess.GetUTF8Text().TrimEnd();
 						var ch = tess.GetCharacters();
-						string trans = TranslateText("Hello", "en", "ja");
+						string trans = TranslateText(text, _gooLang, _souLang);
+						MessageBox.Show(trans);
 					}
 				}
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 
 				throw;
@@ -69,22 +70,17 @@ namespace Helper
 			return translation;
 		}
 
-		public static Image CaptureImage(bool showCursor, Size curSize, Point curPos, Point SourcePoint, Point DestinationPoint, Rectangle SelectionRectangle)
+		public static Bitmap CaptureImage(bool showCursor, Size curSize, Point curPos, Point SourcePoint, Point DestinationPoint, Rectangle SelectionRectangle)
 		{
 			using (Bitmap bitmap = new Bitmap(SelectionRectangle.Width, SelectionRectangle.Height))
 			{
 				using (Graphics g = Graphics.FromImage(bitmap))
 				{
 					g.CopyFromScreen(SourcePoint, DestinationPoint, SelectionRectangle.Size);
-
-					if (showCursor)
-					{
-						Rectangle cursorBounds = new Rectangle(curPos, curSize);
-						Cursors.Default.Draw(g, cursorBounds);
-					}
+					bitmap.Save(Path.GetTempPath() + "CaptureImage.bmp", ImageFormat.Bmp);
 				}
 
-				return (Image)bitmap;
+				return bitmap;
 			}
 		}
 		public static void CaptureImage(bool showCursor, Size curSize, Point curPos, Point SourcePoint, Point DestinationPoint, Rectangle SelectionRectangle, string FilePath, string extension)

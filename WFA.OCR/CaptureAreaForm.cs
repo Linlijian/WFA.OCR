@@ -79,6 +79,7 @@ namespace WFA.OCR
 		public CaptureAreaForm()
 		{
 			InitializeComponent();
+			this.Cursor = Cursors.Cross;
 			this.MouseDown += new MouseEventHandler(mouse_Click);
 			this.MouseDoubleClick += new MouseEventHandler(mouse_DClick);
 			this.MouseUp += new MouseEventHandler(mouse_Up);
@@ -428,8 +429,8 @@ namespace WFA.OCR
 			Point StartPoint = new Point(CurrentTopLeft.X, CurrentTopLeft.Y);
 			Rectangle bounds = new Rectangle(CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
 
-			Image image = TesseractHelper.CaptureImage(showCursor, curSize, curPos, StartPoint, Point.Empty, bounds);
-			TesseractHelper trans = new TesseractHelper(image);
+			TesseractHelper.CaptureImage(showCursor, curSize, curPos, StartPoint, Point.Empty, bounds);
+			TesseractHelper trans = new TesseractHelper();
 			trans.Translate(SessionHelper.SYS_TESSDATA_PATH, SessionHelper.SYS_SOU_LANGUAGE, SessionHelper.SYS_TAR_LANGUAGE, SessionHelper.SYS_GOO_LANGUAGE);
 
 			this.InstanceRef.Show();

@@ -154,9 +154,9 @@ namespace WFA.OCR
 
 				case "KCAPTUREAREA":
 					this.Hide();
-					//Form1 form1 = new Form1();
-					//form1.InstanceRef = this;
-					//form1.Show();
+					CaptureAreaForm caf = new CaptureAreaForm();
+					caf.InstanceRef = this;
+					caf.Show();
 					return;
 
 
