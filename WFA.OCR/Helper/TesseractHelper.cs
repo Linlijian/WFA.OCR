@@ -16,9 +16,20 @@ namespace Helper
 	public class TesseractHelper
 	{
 		string image_apth;
+		string trans_txt;
+		string tess_txt;
+
 		public TesseractHelper()
 		{
 			image_apth = Path.GetTempPath() + "CaptureImage.bmp";
+		}
+		public string GetTessText()
+		{
+			return tess_txt;
+		}
+		public string GetTransText()
+		{
+			return trans_txt;
 		}
 
 		public void Translate(string _path, string _souLang, string _tarLang, string _gooLang)
@@ -30,10 +41,10 @@ namespace Helper
 					using (var tess = new Tesseract(_path, _tarLang, OcrEngineMode.TesseractLstmCombined))
 					{
 						tess.SetImage(image);
-						var text = tess.GetUTF8Text().TrimEnd();
+						tess_txt = tess.GetUTF8Text().TrimEnd();
 						var ch = tess.GetCharacters();
-						string trans = TranslateText(text, _gooLang, _souLang);
-						MessageBox.Show(trans);
+						trans_txt = TranslateText(tess_txt, _gooLang, _souLang);
+						
 					}
 				}
 			}
@@ -43,7 +54,6 @@ namespace Helper
 				throw;
 			}
 		}
-
 		private string TranslateText(string text, string trans_from, string trans_to)
 		{
 			string url = String.Format
@@ -69,7 +79,6 @@ namespace Helper
 
 			return translation;
 		}
-
 		public static Bitmap CaptureImage(bool showCursor, Size curSize, Point curPos, Point SourcePoint, Point DestinationPoint, Rectangle SelectionRectangle)
 		{
 			using (Bitmap bitmap = new Bitmap(SelectionRectangle.Width, SelectionRectangle.Height))

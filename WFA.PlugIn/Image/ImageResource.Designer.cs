@@ -63,6 +63,26 @@ namespace WFA.PlugIn.Image {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap copy_24px {
+            get {
+                object obj = ResourceManager.GetObject("copy_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap copy_32px {
+            get {
+                object obj = ResourceManager.GetObject("copy_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap delete_32px {
             get {
                 object obj = ResourceManager.GetObject("delete_32px", resourceCulture);

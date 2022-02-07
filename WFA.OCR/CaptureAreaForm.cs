@@ -433,6 +433,14 @@ namespace WFA.OCR
 			TesseractHelper trans = new TesseractHelper();
 			trans.Translate(SessionHelper.SYS_TESSDATA_PATH, SessionHelper.SYS_SOU_LANGUAGE, SessionHelper.SYS_TAR_LANGUAGE, SessionHelper.SYS_GOO_LANGUAGE);
 
+			using (PlugIn.ResultList form = new PlugIn.ResultList(trans.GetTransText(), trans.GetTessText()))
+			{
+				form.ShowDialog(this);
+			}
+
+			//PlugIn.ResultList rl = new PlugIn.ResultList(trans.GetTransText(), trans.GetTessText());
+			//rl.Show();
+
 			this.InstanceRef.Show();
 			this.Close();
 		}

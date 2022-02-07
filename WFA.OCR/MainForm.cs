@@ -168,3 +168,6 @@ namespace WFA.OCR
 		#endregion
 	}
 }
+
+
+//icon แต่ละ form

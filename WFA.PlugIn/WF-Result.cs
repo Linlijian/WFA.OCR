@@ -13,15 +13,27 @@ namespace WFA.PlugIn
 {
     public partial class ResultList : Form
     {
-        public ResultList(List<Results> result)
+		public ResultList(string _tar, string _sou)
         {
             InitializeComponent();
-            this.resultGrid.DataSource = result;
+
+			txtSource.Text = _sou;
+			txtTarget.Text = _tar;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-    }
+
+		private void btnCopySource_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(txtSource.Text);
+		}
+
+		private void btnCopyTarGet_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(txtTarget.Text);
+		}
+	}
 }

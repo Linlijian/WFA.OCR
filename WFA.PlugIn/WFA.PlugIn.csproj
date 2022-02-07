@@ -192,6 +192,8 @@
     <None Include="Image\Resources\icon\logo_dSi_8.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\Resources\png\copy_24px.png" />
+    <Content Include="Image\Resources\png\copy_32px.png" />
     <Content Include="Image\Resources\png\delete_64px.png" />
     <Content Include="Image\Resources\png\export_pdf_32px.png" />
     <Content Include="Image\Resources\png\folder_32px.png" />

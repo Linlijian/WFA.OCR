@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>login_w_wuI_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Emgu.CV.UI, Version=4.0.1.3373, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
       <HintPath>..\packages\EMGU.CV.4.0.1.3373\lib\net35\Emgu.CV.UI.dll</HintPath>
@@ -166,6 +169,9 @@
     <Compile Include="UserControls\UCPDF2Image.Designer.cs">
       <DependentUpon>UCPDF2Image.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CaptureAreaForm.resx">
+      <DependentUpon>CaptureAreaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
