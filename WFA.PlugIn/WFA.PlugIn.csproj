@@ -192,6 +192,7 @@
     <None Include="Image\Resources\icon\logo_dSi_8.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\Resources\png\contact_details_32px.png" />
     <Content Include="Image\Resources\png\copy_24px.png" />
     <Content Include="Image\Resources\png\copy_32px.png" />
     <Content Include="Image\Resources\png\delete_64px.png" />
@@ -210,6 +211,7 @@
     <Content Include="Image\Resources\png\image_gallery_32px.png" />
     <Content Include="Image\Resources\png\info_32px.png" />
     <Content Include="Image\Resources\png\jpg_32px.png" />
+    <Content Include="Image\Resources\png\male_user_64px.png" />
     <Content Include="Image\Resources\png\multiply_32px.png" />
     <Content Include="Image\Resources\png\multiply_48px.png" />
     <Content Include="Image\Resources\png\pdf_64px.png" />

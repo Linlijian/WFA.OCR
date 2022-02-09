@@ -32,7 +32,7 @@ namespace UtilityLib
         public static string XML_DUP_FILE;
 
 
-		//public static string TRANS_PATHDATA;
+		public static System.Drawing.Image ABM_PROFILE_IMAGE;
 		//public static string TRANS_LANGUAGE_FROM;
 		//public static string TRANS_LANGUAGE_TO;
 		//public static string TRANS_LANGUAGE;

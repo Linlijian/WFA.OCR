@@ -109,6 +109,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\AboutMe\UCClientAboutMe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AboutMe\UCClientAboutMe.Designer.cs">
+      <DependentUpon>UCClientAboutMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AboutMe\UCABM001.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AboutMe\UCABM001.Designer.cs">
+      <DependentUpon>UCABM001.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\OCR\UCClientOcr.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -199,6 +211,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\AboutMe\UCClientAboutMe.resx">
+      <DependentUpon>UCClientAboutMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AboutMe\UCABM001.resx">
+      <DependentUpon>UCABM001.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OCR\UCClientOcr.resx">
       <DependentUpon>UCClientOcr.cs</DependentUpon>
     </EmbeddedResource>

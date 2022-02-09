@@ -63,6 +63,16 @@ namespace WFA.PlugIn.Image {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap contact_details_32px {
+            get {
+                object obj = ResourceManager.GetObject("contact_details_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap copy_24px {
             get {
                 object obj = ResourceManager.GetObject("copy_24px", resourceCulture);
@@ -367,6 +377,16 @@ namespace WFA.PlugIn.Image {
             get {
                 object obj = ResourceManager.GetObject("logo_dSi_9", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap male_user_64px {
+            get {
+                object obj = ResourceManager.GetObject("male_user_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

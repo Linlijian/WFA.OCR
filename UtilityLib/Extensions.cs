@@ -305,5 +305,24 @@ namespace UtilityLib
 			key = (Keys)keyconverter.ConvertFrom(data.ToString());
 			return key;
 		}
+
+		public static System.Drawing.Bitmap Base64StringToBitmap(this string base64String)
+		{
+			System.Drawing.Bitmap bmpReturn = null;
+
+			byte[] byteBuffer = Convert.FromBase64String(base64String);
+			System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(byteBuffer);
+
+			memoryStream.Position = 0;
+
+			bmpReturn = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(memoryStream);
+
+			memoryStream.Close();
+			memoryStream = null;
+			byteBuffer = null;
+
+
+			return bmpReturn;
+		}
 	}
 }
