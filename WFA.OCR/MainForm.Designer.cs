@@ -31,7 +31,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.panelTop = new System.Windows.Forms.Panel();
 			this.panelTitle = new System.Windows.Forms.Panel();
-			this.lblPDFHelper = new System.Windows.Forms.Label();
+			this.lblPanelTitle = new System.Windows.Forms.Label();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.panelClientBody = new System.Windows.Forms.Panel();
 			this.panelTop.SuspendLayout();
@@ -52,28 +52,30 @@
 			// 
 			// panelTitle
 			// 
-			this.panelTitle.Controls.Add(this.lblPDFHelper);
+			this.panelTitle.Controls.Add(this.lblPanelTitle);
 			this.panelTitle.Dock = System.Windows.Forms.DockStyle.Left;
 			this.panelTitle.Location = new System.Drawing.Point(0, 0);
 			this.panelTitle.Name = "panelTitle";
-			this.panelTitle.Size = new System.Drawing.Size(256, 40);
+			this.panelTitle.Size = new System.Drawing.Size(289, 40);
 			this.panelTitle.TabIndex = 0;
+			this.panelTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseMove);
 			// 
-			// lblPDFHelper
+			// lblPanelTitle
 			// 
-			this.lblPDFHelper.AutoSize = true;
-			this.lblPDFHelper.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblPDFHelper.ForeColor = System.Drawing.Color.White;
-			this.lblPDFHelper.Location = new System.Drawing.Point(15, 10);
-			this.lblPDFHelper.Name = "lblPDFHelper";
-			this.lblPDFHelper.Size = new System.Drawing.Size(91, 19);
-			this.lblPDFHelper.TabIndex = 1;
-			this.lblPDFHelper.Text = "PDFHelper";
+			this.lblPanelTitle.AutoSize = true;
+			this.lblPanelTitle.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblPanelTitle.ForeColor = System.Drawing.Color.White;
+			this.lblPanelTitle.Location = new System.Drawing.Point(15, 10);
+			this.lblPanelTitle.Name = "lblPanelTitle";
+			this.lblPanelTitle.Size = new System.Drawing.Size(271, 19);
+			this.lblPanelTitle.TabIndex = 1;
+			this.lblPanelTitle.Text = "Translation by AfraidPikunFlower";
+			this.lblPanelTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblPanelTitle_MouseMove);
 			// 
 			// btnClose
 			// 
 			this.btnClose.BackColor = System.Drawing.Color.Black;
-			this.btnClose.BackgroundImage = global::WFA.PlugIn.Image.ImageResource.multiply_32px;
+			this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
 			this.btnClose.FlatAppearance.BorderSize = 0;
 			this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(23)))), ((int)(((byte)(34)))));
 			this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
@@ -104,11 +106,11 @@
 			this.Controls.Add(this.panelClientBody);
 			this.Controls.Add(this.panelTop);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.panelTop.ResumeLayout(false);
 			this.panelTitle.ResumeLayout(false);
@@ -121,7 +123,7 @@
 
 		private System.Windows.Forms.Panel panelTop;
 		private System.Windows.Forms.Button btnClose;
-		private System.Windows.Forms.Label lblPDFHelper;
+		private System.Windows.Forms.Label lblPanelTitle;
 		private System.Windows.Forms.Panel panelClientBody;
 		private System.Windows.Forms.Panel panelTitle;
 	}

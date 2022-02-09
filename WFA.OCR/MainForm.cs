@@ -28,10 +28,26 @@ namespace WFA.OCR
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        #endregion
+		private void panelTitle_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
+		}
+		private void lblPanelTitle_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
+		}
+		#endregion
 
-        #region init
-        static MainForm _obj;
+		#region init
+		static MainForm _obj;
 
         public static MainForm Instance
         {
