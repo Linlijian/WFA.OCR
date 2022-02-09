@@ -115,6 +115,18 @@
     <Compile Include="UserControls\OCR\UCClientOcr.Designer.cs">
       <DependentUpon>UCClientOcr.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\OCR\UCOCRS02.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OCR\UCOCRS02.Designer.cs">
+      <DependentUpon>UCOCRS02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OCR\UCOCRS01.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OCR\UCOCRS01.Designer.cs">
+      <DependentUpon>UCOCRS01.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\OCR\UCOCR001.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,6 +201,12 @@
     </Compile>
     <EmbeddedResource Include="UserControls\OCR\UCClientOcr.resx">
       <DependentUpon>UCClientOcr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OCR\UCOCRS02.resx">
+      <DependentUpon>UCOCRS02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OCR\UCOCRS01.resx">
+      <DependentUpon>UCOCRS01.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OCR\UCOCR001.resx">
       <DependentUpon>UCOCR001.cs</DependentUpon>

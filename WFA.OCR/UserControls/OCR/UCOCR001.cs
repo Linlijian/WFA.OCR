@@ -218,23 +218,11 @@ namespace WFA.OCR.UserControls
 		}
 		private void BuildLanguageList()
 		{
-			//foreach (var item in SessionHelper.SYS_LINK_DOWNLOAD_V3)
-			//{
-			//	clb_LanguageList.Items.Add(item.LANGUAGE_TEXT);
-			//}
-			//foreach (var item in SessionHelper.SYS_LINK_DOWNLOAD_V4)
-			//{
-			//	clb_LanguageList.Items.Add(item.LANGUAGE_TEXT);
-			//}
 			foreach (var item in SessionHelper.SYS_LINK_DOWNLOAD_V41)
 			{
 				clb_LanguageList.Items.Add(item.LANGUAGE_TEXT);
 			}
 		}
-
-
 		#endregion
-
-
 	}
 }

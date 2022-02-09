@@ -32,7 +32,13 @@
 			this.panelClient = new System.Windows.Forms.Panel();
 			this.panelSetting = new System.Windows.Forms.Panel();
 			this.PActive2 = new System.Windows.Forms.Panel();
-			this.btnSetting = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
+			this.PSubTranslate2 = new System.Windows.Forms.Panel();
+			this.btnDownloadV4 = new System.Windows.Forms.Button();
+			this.PSActiveDownloadV4 = new System.Windows.Forms.Panel();
+			this.PSubTranslate1 = new System.Windows.Forms.Panel();
+			this.btnDownloadV3 = new System.Windows.Forms.Button();
+			this.PSActiveDownloadV3 = new System.Windows.Forms.Panel();
 			this.panelTranslate = new System.Windows.Forms.Panel();
 			this.PActive1 = new System.Windows.Forms.Panel();
 			this.btnTranslate = new System.Windows.Forms.Button();
@@ -43,6 +49,8 @@
 			this.panelClientTask = new System.Windows.Forms.Panel();
 			this.panelClient.SuspendLayout();
 			this.panelSetting.SuspendLayout();
+			this.PSubTranslate2.SuspendLayout();
+			this.PSubTranslate1.SuspendLayout();
 			this.panelTranslate.SuspendLayout();
 			this.panelTitle.SuspendLayout();
 			this.panelHome.SuspendLayout();
@@ -52,6 +60,8 @@
 			// 
 			this.panelClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
 			this.panelClient.Controls.Add(this.panelSetting);
+			this.panelClient.Controls.Add(this.PSubTranslate2);
+			this.panelClient.Controls.Add(this.PSubTranslate1);
 			this.panelClient.Controls.Add(this.panelTranslate);
 			this.panelClient.Controls.Add(this.panelTitle);
 			this.panelClient.Controls.Add(this.panelHome);
@@ -64,12 +74,12 @@
 			// panelSetting
 			// 
 			this.panelSetting.Controls.Add(this.PActive2);
-			this.panelSetting.Controls.Add(this.btnSetting);
+			this.panelSetting.Controls.Add(this.button2);
 			this.panelSetting.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panelSetting.Location = new System.Drawing.Point(0, 196);
+			this.panelSetting.Location = new System.Drawing.Point(0, 272);
 			this.panelSetting.Name = "panelSetting";
 			this.panelSetting.Size = new System.Drawing.Size(256, 38);
-			this.panelSetting.TabIndex = 24;
+			this.panelSetting.TabIndex = 29;
 			// 
 			// PActive2
 			// 
@@ -79,26 +89,101 @@
 			this.PActive2.Size = new System.Drawing.Size(6, 35);
 			this.PActive2.TabIndex = 15;
 			// 
-			// btnSetting
+			// button2
 			// 
-			this.btnSetting.FlatAppearance.BorderSize = 0;
-			this.btnSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-			this.btnSetting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-			this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSetting.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnSetting.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.btnSetting.Image = global::WFA.PlugIn.Image.ImageResource.settings_32px;
-			this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnSetting.Location = new System.Drawing.Point(9, 0);
-			this.btnSetting.Name = "btnSetting";
-			this.btnSetting.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-			this.btnSetting.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.btnSetting.Size = new System.Drawing.Size(244, 35);
-			this.btnSetting.TabIndex = 16;
-			this.btnSetting.Text = "          Setting";
-			this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnSetting.UseVisualStyleBackColor = true;
-			this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+			this.button2.FlatAppearance.BorderSize = 0;
+			this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+			this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button2.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+			this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button2.Location = new System.Drawing.Point(9, 0);
+			this.button2.Name = "button2";
+			this.button2.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+			this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.button2.Size = new System.Drawing.Size(244, 35);
+			this.button2.TabIndex = 16;
+			this.button2.Text = "          Setting";
+			this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button2.UseVisualStyleBackColor = true;
+			// 
+			// PSubTranslate2
+			// 
+			this.PSubTranslate2.Controls.Add(this.btnDownloadV4);
+			this.PSubTranslate2.Controls.Add(this.PSActiveDownloadV4);
+			this.PSubTranslate2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.PSubTranslate2.Location = new System.Drawing.Point(0, 234);
+			this.PSubTranslate2.Name = "PSubTranslate2";
+			this.PSubTranslate2.Size = new System.Drawing.Size(256, 38);
+			this.PSubTranslate2.TabIndex = 28;
+			// 
+			// btnDownloadV4
+			// 
+			this.btnDownloadV4.FlatAppearance.BorderSize = 0;
+			this.btnDownloadV4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+			this.btnDownloadV4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.btnDownloadV4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnDownloadV4.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDownloadV4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.btnDownloadV4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnDownloadV4.Location = new System.Drawing.Point(75, 0);
+			this.btnDownloadV4.Name = "btnDownloadV4";
+			this.btnDownloadV4.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+			this.btnDownloadV4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.btnDownloadV4.Size = new System.Drawing.Size(178, 35);
+			this.btnDownloadV4.TabIndex = 21;
+			this.btnDownloadV4.Text = "Download Version 4.0";
+			this.btnDownloadV4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnDownloadV4.UseVisualStyleBackColor = true;
+			this.btnDownloadV4.Click += new System.EventHandler(this.btnDownloadV41_Click);
+			// 
+			// PSActiveDownloadV4
+			// 
+			this.PSActiveDownloadV4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(154)))));
+			this.PSActiveDownloadV4.Location = new System.Drawing.Point(63, 0);
+			this.PSActiveDownloadV4.Name = "PSActiveDownloadV4";
+			this.PSActiveDownloadV4.Size = new System.Drawing.Size(6, 35);
+			this.PSActiveDownloadV4.TabIndex = 22;
+			// 
+			// PSubTranslate1
+			// 
+			this.PSubTranslate1.Controls.Add(this.btnDownloadV3);
+			this.PSubTranslate1.Controls.Add(this.PSActiveDownloadV3);
+			this.PSubTranslate1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.PSubTranslate1.Location = new System.Drawing.Point(0, 196);
+			this.PSubTranslate1.Name = "PSubTranslate1";
+			this.PSubTranslate1.Size = new System.Drawing.Size(256, 38);
+			this.PSubTranslate1.TabIndex = 26;
+			// 
+			// btnDownloadV3
+			// 
+			this.btnDownloadV3.FlatAppearance.BorderSize = 0;
+			this.btnDownloadV3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+			this.btnDownloadV3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.btnDownloadV3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnDownloadV3.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDownloadV3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.btnDownloadV3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnDownloadV3.Location = new System.Drawing.Point(75, 0);
+			this.btnDownloadV3.Name = "btnDownloadV3";
+			this.btnDownloadV3.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+			this.btnDownloadV3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.btnDownloadV3.Size = new System.Drawing.Size(178, 35);
+			this.btnDownloadV3.TabIndex = 21;
+			this.btnDownloadV3.Text = "Download Version 3.X";
+			this.btnDownloadV3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnDownloadV3.UseVisualStyleBackColor = true;
+			this.btnDownloadV3.Click += new System.EventHandler(this.btnDownloadV3_Click);
+			// 
+			// PSActiveDownloadV3
+			// 
+			this.PSActiveDownloadV3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(154)))));
+			this.PSActiveDownloadV3.Location = new System.Drawing.Point(63, 0);
+			this.PSActiveDownloadV3.Name = "PSActiveDownloadV3";
+			this.PSActiveDownloadV3.Size = new System.Drawing.Size(6, 35);
+			this.PSActiveDownloadV3.TabIndex = 22;
 			// 
 			// panelTranslate
 			// 
@@ -126,7 +211,7 @@
 			this.btnTranslate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnTranslate.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnTranslate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.btnTranslate.Image = global::WFA.PlugIn.Image.ImageResource.google_translate_32px;
+			this.btnTranslate.Image = ((System.Drawing.Image)(resources.GetObject("btnTranslate.Image")));
 			this.btnTranslate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnTranslate.Location = new System.Drawing.Point(9, 0);
 			this.btnTranslate.Name = "btnTranslate";
@@ -179,7 +264,7 @@
 			this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnHome.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnHome.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.btnHome.Image = global::WFA.PlugIn.Image.ImageResource.home_32px;
+			this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
 			this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnHome.Location = new System.Drawing.Point(0, 0);
 			this.btnHome.Name = "btnHome";
@@ -210,6 +295,8 @@
 			this.Size = new System.Drawing.Size(900, 560);
 			this.panelClient.ResumeLayout(false);
 			this.panelSetting.ResumeLayout(false);
+			this.PSubTranslate2.ResumeLayout(false);
+			this.PSubTranslate1.ResumeLayout(false);
 			this.panelTranslate.ResumeLayout(false);
 			this.panelTitle.ResumeLayout(false);
 			this.panelTitle.PerformLayout();
@@ -231,6 +318,12 @@
 		private System.Windows.Forms.Panel panelTranslate;
 		private System.Windows.Forms.Panel panelSetting;
 		private System.Windows.Forms.Panel PActive2;
-		private System.Windows.Forms.Button btnSetting;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Panel PSubTranslate2;
+		private System.Windows.Forms.Button btnDownloadV4;
+		private System.Windows.Forms.Panel PSActiveDownloadV4;
+		private System.Windows.Forms.Panel PSubTranslate1;
+		private System.Windows.Forms.Button btnDownloadV3;
+		private System.Windows.Forms.Panel PSActiveDownloadV3;
 	}
 }

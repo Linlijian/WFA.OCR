@@ -38,20 +38,19 @@ namespace Helper
 			{
 				using (var image = new Image<Bgr, byte>(image_apth))
 				{
-					using (var tess = new Tesseract(_path, _tarLang, OcrEngineMode.TesseractLstmCombined))
+					using (var tess = new Tesseract(_path, _tarLang, OcrEngineMode.LstmOnly))
 					{
 						tess.SetImage(image);
 						tess_txt = tess.GetUTF8Text().TrimEnd();
 						var ch = tess.GetCharacters();
 						trans_txt = TranslateText(tess_txt, _gooLang, _souLang);
-						
 					}
 				}
 			}
 			catch (Exception e)
 			{
-
-				throw;
+				tess_txt = e.Message;
+				trans_txt = string.Empty;
 			}
 		}
 		private string TranslateText(string text, string trans_from, string trans_to)
