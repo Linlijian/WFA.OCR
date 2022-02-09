@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UtilityLib;
+using static System.Windows.Forms.CheckedListBox;
 
 namespace UCControl.OCR
 {
@@ -17,7 +14,11 @@ namespace UCControl.OCR
 		public string SOURCE_LANG { get; set; }
 		public string GOOGLE_LANG { get; set; }
 		public string CONFIG_PATH { get; set; }
+		public string TEMP_PATH { get; set; }
+		public string TESS_PATH { get; set; }
 		public string PATH { get; set; }
+
+		public CheckedItemCollection CLB_LANGUAGE_LIST { get; set; }
 
 		public List<DropDownList> SOURCE_LANG_LIST { get; set; }
 		public List<DropDownList> TARGET_LANG_LIST { get; set; }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace UtilityLib
 {
     public class FormState
@@ -19,5 +14,12 @@ namespace UtilityLib
 		public string TEXT { get; set; }
 		public string VALUE { get; set; }
 		public string REMARK { get; set; }
+	}
+
+	public class DownloadLanguageLink
+	{
+		public string LANGUAGE_CODE { get; set; }
+		public string LANGUAGE_LINK { get; set; }
+		public string LANGUAGE_TEXT { get; set; }
 	}
 }

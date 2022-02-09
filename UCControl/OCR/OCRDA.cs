@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using UtilityLib;
 
 namespace UCControl.OCR
@@ -22,6 +23,7 @@ namespace UCControl.OCR
 				case OCRGenerateType.SaveDropDown: return SaveDropDown(dto);
 				case OCRGenerateType.GetDDL: return GetDDL(dto);
 				case OCRGenerateType.GetLanguage: return GetLanguage(dto);
+				case OCRGenerateType.DownloadFile: return DownloadFile(dto);
 			}
 			return dto;
 		}
@@ -32,18 +34,44 @@ namespace UCControl.OCR
 
 			return dto;
 		}
+		public OCRDTO DownloadFile(OCRDTO dto)
+		{
+			if (!IsPathExist(dto.Model.TEMP_PATH))
+				Directory.CreateDirectory(dto.Model.TEMP_PATH);
+			
+			WebClient webClient = new WebClient();
+			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+			foreach (var item in dto.Model.CLB_LANGUAGE_LIST)
+			{
+				var link = SessionHelper.SYS_LINK_DOWNLOAD_V41.Find(x => x.LANGUAGE_TEXT == item.ToString());
+				var file_tar = dto.Model.TESS_PATH + "\\" + link.LANGUAGE_CODE;
+				var file_sou = dto.Model.TEMP_PATH + "\\" + link.LANGUAGE_CODE;
+				webClient.DownloadFile(link.LANGUAGE_LINK, file_sou);
+
+				if (File.Exists(file_tar))
+					File.Delete(file_tar);
+				File.Move(file_sou, file_tar);
+			}
+
+			GetLanguage(dto);
+			if (!dto.ErrorResults.IS_RESULT)
+			{
+				dto.ErrorResults.IS_RESULT = false;
+				dto.ErrorResults.ERROR_CODE = -1;
+				dto.ErrorResults.ERROR_MESSAGE = "Not found folder!";
+			}
+
+			return dto;
+		}
 		public OCRDTO GetLanguage(OCRDTO dto)
 		{
 			if (IsPathExist(dto.Model.CONFIG_PATH))
 			{
 				var config = IOHelper.ReadFolderTrainData(dto.Model.CONFIG_PATH);
 
-				dto.Model.SOURCE_LANG_LIST = new List<DropDownList>();
 				dto.Model.TARGET_LANG_LIST = new List<DropDownList>();
-
 				foreach (var item in config)
 				{
-					dto.Model.SOURCE_LANG_LIST.Add(new DropDownList { TEXT = IOHelper.GetTextLang(item), VALUE = item });
 					dto.Model.TARGET_LANG_LIST.Add(new DropDownList { TEXT = IOHelper.GetTextLang(item), VALUE = item });
 				}
 

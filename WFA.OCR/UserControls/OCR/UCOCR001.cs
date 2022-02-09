@@ -9,6 +9,7 @@ using UCControl.OCR;
 using UtilityLib;
 using System.Collections.Generic;
 using HotkeyManagement;
+using System.Net;
 
 namespace WFA.OCR.UserControls
 {
@@ -27,6 +28,7 @@ namespace WFA.OCR.UserControls
 		{
 			BuildHotkeyDDL();
 			BuildLanguageDDL();
+			BuildLanguageList();
 			ReadHotkey();
 
 			if (!btnSave.Enabled)
@@ -40,26 +42,13 @@ namespace WFA.OCR.UserControls
 		#region event	
 		private void btnDownloadLanguage_Click(object sender, EventArgs e)
 		{
-			//download
+			ClearTemp();
+			ClearGenerateStatus();
 
-			//bind ddl all lang
-			//var da = new OCRDA();
-
-			//da.DTO.Model.GenerateType = OCRGenerateType.GetLanguage;
-			//da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_TESSDATA_PATH;
-
-			//var result = Generate(OCRGenerateType.GetLanguage, da);
-			//if (!result.IS_RESULT)
-			//{
-			//	PluginHelper.MassageBox("Error", "Cann't Read file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
-			//	return;
-			//}
-			//
-			//EnabledDropDownList();
-
-			//register hotkey
-			//enabled btn save
-			//clear lbl save
+			using (WaitForm form = new WaitForm(DownloadFile))
+			{
+				form.ShowDialog(this);
+			}
 		}
 		private void btnSave_Click(object sender, EventArgs e)
 		{
@@ -76,7 +65,7 @@ namespace WFA.OCR.UserControls
 		#endregion
 
 		#region method        
-		private ErrorResults Generate(string action, OCRDA da)
+		private ErrorResults Generate(OCRDA da)
 		{
 			da.Generate(da.DTO);
 			return da.DTO.ErrorResults;
@@ -86,11 +75,46 @@ namespace WFA.OCR.UserControls
 			lblDownloadStatus.Text = "";
 			lblSaveStatus.Text = "";
 		}
+		private void ClearTemp()
+		{
+			if(System.IO.Directory.Exists(System.IO.Path.GetTempPath() + "TessData"))
+				System.IO.Directory.Delete(System.IO.Path.GetTempPath() + "TessData");
+		}
 		private void EnabledDropDownList()
 		{
 			ddlHotkey.Enabled = true;
 			ddlSourceLanguage.Enabled = true;
 			ddlTargetLanguage.Enabled = true;
+		}
+		private void DownloadFile()
+		{
+			var da = new OCRDA();
+
+			da.DTO.Model.GenerateType = OCRGenerateType.DownloadFile;
+			da.DTO.Model.CLB_LANGUAGE_LIST = clb_LanguageList.CheckedItems;
+			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_TESSDATA_PATH;
+			da.DTO.Model.TEMP_PATH = System.IO.Path.GetTempPath() + "TessData";
+			da.DTO.Model.TESS_PATH = AppDomain.CurrentDomain.BaseDirectory + "TessData";
+
+			var result = Generate(da);
+			if (!result.IS_RESULT)
+			{
+				ClearTemp();
+				PluginHelper.MassageBox("Error", "Cann't Download file.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
+				return;
+			}
+
+			EnabledDropDownList();
+
+			ddlTargetLanguage.ValueMember = "VALUE";
+			ddlTargetLanguage.DisplayMember = "TEXT";
+			ddlTargetLanguage.DataSource = da.DTO.Model.TARGET_LANG_LIST;
+			SessionHelper.SYS_TAR_LANGUAGES = da.DTO.Model.TARGET_LANG_LIST;
+
+			//enabled btn save
+			btnSave.Enabled = true;
+
+			lblDownloadStatus.Text = "Download Compete!";
 		}
 		private void SaveDropDown()
 		{
@@ -107,7 +131,7 @@ namespace WFA.OCR.UserControls
 			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_CONFIG_PATH;
 			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
 
-			var result = Generate(OCRGenerateType.SaveDropDown, da);
+			var result = Generate(da);
 			if (!result.IS_RESULT)
 			{
 				PluginHelper.MassageBox("Error", "Cann't Save file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
@@ -134,7 +158,7 @@ namespace WFA.OCR.UserControls
 			da.DTO.Model.CONFIG_PATH = SessionHelper.SYS_CONFIG_PATH;
 			da.DTO.Model.PATH = SessionHelper.SYS_PATH;
 
-			var result = Generate(OCRGenerateType.GetDDL, da);
+			var result = Generate(da);
 			if (!result.IS_RESULT)
 			{
 				PluginHelper.MassageBox("Error", "Cann't Read file config.\r\nDescription: " + result.ERROR_MESSAGE, ButtonType.OK);
@@ -192,11 +216,25 @@ namespace WFA.OCR.UserControls
 				lblSaveStatus.Text = "Error 404 Data not found!";
 			}
 		}
-
+		private void BuildLanguageList()
+		{
+			//foreach (var item in SessionHelper.SYS_LINK_DOWNLOAD_V3)
+			//{
+			//	clb_LanguageList.Items.Add(item.LANGUAGE_TEXT);
+			//}
+			//foreach (var item in SessionHelper.SYS_LINK_DOWNLOAD_V4)
+			//{
+			//	clb_LanguageList.Items.Add(item.LANGUAGE_TEXT);
+			//}
+			foreach (var item in SessionHelper.SYS_LINK_DOWNLOAD_V41)
+			{
+				clb_LanguageList.Items.Add(item.LANGUAGE_TEXT);
+			}
+		}
 
 
 		#endregion
 
-		
+
 	}
 }

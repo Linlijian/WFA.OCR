@@ -21,7 +21,8 @@ namespace UCControl.OCR
 	{
 		public const string xxx = "xxx"; 
 		public const string SaveDropDown = "SaveDropDown";
-		public const string GetDDL = "GetDDL";
+		public const string GetDDL = "GetDDL"; 
+		public const string DownloadFile = "DownloadFile";
 		public const string GetLanguage = "GetLanguage";
 	}
 }

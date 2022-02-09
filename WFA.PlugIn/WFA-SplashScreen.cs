@@ -101,6 +101,48 @@ namespace WFA.PlugIn
 				}
 				#endregion
 
+				#region load download list
+				lblStatus.Text = "Load Download language list ver.4.0";
+
+				string link3 = @"https://github.com/tesseract-ocr/tessdata/raw/3.04.00/";
+				string link4 = @"https://github.com/tesseract-ocr/tessdata/raw/4.00/";
+				string link41 = @"https://github.com/tesseract-ocr/tessdata/raw/4.1.0/";
+
+				List<DownloadLanguageLink> list3 = new List<DownloadLanguageLink>();
+				List<DownloadLanguageLink> list4 = new List<DownloadLanguageLink>();
+				List<DownloadLanguageLink> list41 = new List<DownloadLanguageLink>();
+
+				foreach (var item in SessionHelper.LANG_DOWNLOAD.Split(new string[] { "\r\n" }, StringSplitOptions.None))
+				{
+					if (!item.IsNullOrEmpty())
+					{
+						var text = SessionHelper.SYS_SOU_LANGUAGES.Where(w => w.REMARK == item.Split('.').First()).FirstOrDefault().TEXT;
+						list3.Add(new DownloadLanguageLink()
+						{
+							LANGUAGE_CODE = item,
+							LANGUAGE_LINK = link3 + item,
+							LANGUAGE_TEXT = text
+						});
+						list4.Add(new DownloadLanguageLink()
+						{
+							LANGUAGE_CODE = item,
+							LANGUAGE_LINK = link4 + item,
+							LANGUAGE_TEXT = text
+						});
+						list41.Add(new DownloadLanguageLink()
+						{
+							LANGUAGE_CODE = item,
+							LANGUAGE_LINK = link41 + item,
+							LANGUAGE_TEXT = text
+						});
+					}
+				}
+
+				SessionHelper.SYS_LINK_DOWNLOAD_V3 = list3;
+				SessionHelper.SYS_LINK_DOWNLOAD_V4 = list4;
+				SessionHelper.SYS_LINK_DOWNLOAD_V41 = list41;
+				#endregion
+
 				SessionHelper.SYS_START_UP = true;
 			}
 			catch (Exception e)
