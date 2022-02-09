@@ -56,7 +56,7 @@
 			this.panelTitle.Dock = System.Windows.Forms.DockStyle.Left;
 			this.panelTitle.Location = new System.Drawing.Point(0, 0);
 			this.panelTitle.Name = "panelTitle";
-			this.panelTitle.Size = new System.Drawing.Size(289, 40);
+			this.panelTitle.Size = new System.Drawing.Size(256, 40);
 			this.panelTitle.TabIndex = 0;
 			this.panelTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseMove);
 			// 
@@ -67,9 +67,9 @@
 			this.lblPanelTitle.ForeColor = System.Drawing.Color.White;
 			this.lblPanelTitle.Location = new System.Drawing.Point(15, 10);
 			this.lblPanelTitle.Name = "lblPanelTitle";
-			this.lblPanelTitle.Size = new System.Drawing.Size(259, 19);
+			this.lblPanelTitle.Size = new System.Drawing.Size(154, 19);
 			this.lblPanelTitle.TabIndex = 1;
-			this.lblPanelTitle.Text = "Translation | AfraidPikunFlower";
+			this.lblPanelTitle.Text = "AfraidPikunFlower";
 			this.lblPanelTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblPanelTitle_MouseMove);
 			// 
 			// btnClose
