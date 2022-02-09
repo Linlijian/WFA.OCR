@@ -67,9 +67,9 @@
 			this.lblPanelTitle.ForeColor = System.Drawing.Color.White;
 			this.lblPanelTitle.Location = new System.Drawing.Point(15, 10);
 			this.lblPanelTitle.Name = "lblPanelTitle";
-			this.lblPanelTitle.Size = new System.Drawing.Size(271, 19);
+			this.lblPanelTitle.Size = new System.Drawing.Size(259, 19);
 			this.lblPanelTitle.TabIndex = 1;
-			this.lblPanelTitle.Text = "Translation by AfraidPikunFlower";
+			this.lblPanelTitle.Text = "Translation | AfraidPikunFlower";
 			this.lblPanelTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblPanelTitle_MouseMove);
 			// 
 			// btnClose
