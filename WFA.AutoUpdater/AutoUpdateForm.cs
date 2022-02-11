@@ -15,7 +15,7 @@ namespace WFA.AutoUpdater
 		private bool downloading_process_notcomplete = true;
 		private string url_version = @"https://raw.githubusercontent.com/Lintemi/text/main/info.txt";
 		private string url_donwload_file = @"";
-		private string download_file_path = Path.GetTempPath() + "WFA.OCR//WFA.Update.zip";
+		private string download_file_path = Path.GetTempPath() + "WFA.OCR//WFA.OCR.zip";
 		private string download_folder_path = Path.GetTempPath() + "WFA.OCR";
 		private string extract_path = AppDomain.CurrentDomain.BaseDirectory;
 
