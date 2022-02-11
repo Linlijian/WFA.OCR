@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFA.PlugIn", "WFA.PlugIn\WF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFA.AutoUpdater", "WFA.AutoUpdater\WFA.AutoUpdater.csproj", "{7317AC15-48B1-4457-88E6-F2C9E1D9252D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Install", "CA.Install\CA.Install.csproj", "{E78638B6-BF4B-4B71-8EA9-4FE414BFA040}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7317AC15-48B1-4457-88E6-F2C9E1D9252D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7317AC15-48B1-4457-88E6-F2C9E1D9252D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7317AC15-48B1-4457-88E6-F2C9E1D9252D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E78638B6-BF4B-4B71-8EA9-4FE414BFA040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78638B6-BF4B-4B71-8EA9-4FE414BFA040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78638B6-BF4B-4B71-8EA9-4FE414BFA040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78638B6-BF4B-4B71-8EA9-4FE414BFA040}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
