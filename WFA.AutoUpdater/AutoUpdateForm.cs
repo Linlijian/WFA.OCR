@@ -1,13 +1,8 @@
-﻿using SevenZip;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.IO.Compression;
 using System.Net;
-using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
 using WFA.OCR.Helper;
 using WFA.PlugIn;
@@ -16,15 +11,41 @@ namespace WFA.AutoUpdater
 {
     public partial class AutoUpdateForm : Form
     {
+		#region init
+		private bool downloading_process_notcomplete = true;
+		private string url_version = @"https://raw.githubusercontent.com/Lintemi/text/main/info.txt";
+		private string url_donwload_file = @"";
+		private string download_file_path = Path.GetTempPath() + "WFA.OCR//WFA.Update.zip";
+		private string download_folder_path = Path.GetTempPath() + "WFA.OCR";
+		private string extract_path = AppDomain.CurrentDomain.BaseDirectory;
 
-        public AutoUpdateForm()
+
+		public AutoUpdateForm()
         {
             InitializeComponent();
         }
-
 		private void AutoUpdaterForm_Load(object sender, EventArgs e)
 		{
 			pbAnimetion.Image = Properties.Resources.Sprite_006;
+			DownloadingWorker.RunWorkerAsync();
+		}
+		#endregion
+
+		#region event
+		private void DownloadingWorker_DoWork(object sender, DoWorkEventArgs e)
+		{
+			BackgroundWorker helperBW = sender as BackgroundWorker;
+			while (downloading_process_notcomplete)
+			{
+				mainProcess(helperBW);
+			}
+		}
+		private void DownloadingWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			this.Close();
+		}
+		private void mainProcess(BackgroundWorker bw)
+		{
 			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 			string txt_err = string.Empty;
@@ -33,21 +54,27 @@ namespace WFA.AutoUpdater
 				txt_err = "Get Main Info";
 				FileVersionInfo main_info = GetMainInfo();
 
-				txt_err = "Ge tMain Online Version";
+				txt_err = "Get Main Online Version";
 				string main_online_version = GetMainOnlineVersion();
 
 				if (main_info.FileVersion != main_online_version)
 				{
-					//เปิดปิดกรณีให้อัพเดทใหม่ autoupdater
-					Download();
+					IsUpdateNewAutoUpdater();
 				}
 			}
 			catch (Exception ex)
 			{
 				PluginHelper.MassageBox("Fail", txt_err + "\r\n" + ex.Message, ButtonType.OK);
 			}
+			finally
+			{
+				//close worker
+				downloading_process_notcomplete = false;
+			}
 		}
+		#endregion
 
+		#region method
 		private FileVersionInfo GetMainInfo()
 		{
 			var all_file = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.exe");
@@ -64,44 +91,76 @@ namespace WFA.AutoUpdater
 		}
 		private string GetMainOnlineVersion()
 		{
-			string url = "https://raw.githubusercontent.com/Linlijian/PikunBot-Mir4/main/version.txt";
-			WebClient client = new WebClient();
-			Stream stream = client.OpenRead(url);
-			StreamReader reader = new StreamReader(stream);
-
-			return reader.ReadToEnd();
+			using (WebClient webClient = new WebClient())
+			{
+				using (Stream stream = webClient.OpenRead(url_version))
+				{
+					StreamReader reader = new StreamReader(stream);
+					return (reader.ReadToEnd().Split(new string[] { "\r\n", ":" }, StringSplitOptions.None))[1];
+				}
+			}
 		}
 		private void Download()
 		{
-			WebClient webClient = new WebClient();
+			using (WebClient webClient = new WebClient())
+			{
+				if (!Directory.Exists(download_folder_path))
+					Directory.CreateDirectory(download_folder_path);
 
-			string zipPath = @"D:\WFA\test\testZip.zip";
-			string extractPath = @"D:\WFA\test\extract";
+				webClient.DownloadFile(url_donwload_file, download_file_path);
 
-			ZipFile.ExtractToDirectory(zipPath, extractPath);
-			//var a = new ZipFile(zipPath);
-			//a.ExtractAll(extractPath);
+				using (Stream stream = webClient.OpenRead(url_version))
+				{
+					StreamReader reader = new StreamReader(stream);
+					var info = (reader.ReadToEnd().Split(new string[] { "\r\n" }, StringSplitOptions.None))[1];
 
-			//foreach (var item in dto.Model.CLB_LANGUAGE_LIST)
-			//{
-			//	var link = "";
-			//	var file_tar = dto.Model.TESS_PATH + "\\" + link.LANGUAGE_CODE;
-			//	var file_sou = dto.Model.TEMP_PATH + "\\" + link.LANGUAGE_CODE;
-			//	webClient.DownloadFile(link.LANGUAGE_LINK, file_sou);
+					string i = download_folder_path + "//i.pikun";
+					using (StreamWriter writer = new StreamWriter(i))
+					{
+						writer.WriteLine(info.Split(':')[1]);
+					}
 
-			//	string startPath = @"D:\WFA\WFA.CSSGenerator";
-			//	string zipPath = @"D:\WFA\WFA-WebClientAndZip-master\WFA-WebClient\bin\Debug2\test.rar";
-			//	string extractPath = @"D:\WFA\WFA-WebClientAndZip-master\WFA-WebClient\bin\Debug2\extract";
+					string p = download_folder_path + "//p.pikun";
+					using (StreamWriter writer = new StreamWriter(p))
+					{
+						writer.WriteLine("extract_path:" + extract_path);
+					}
+				}
+			}
 
-			//	var a = new ZipFile(zipPath);
-			//	a.ExtractAll(extractPath);
+			//ZipFile.ExtractToDirectory(download_file_path, extract_path);
 
-			//	if (File.Exists(file_tar))
-			//		File.Delete(file_tar);
-			//	File.Move(file_sou, file_tar);
-			//}
 		}
-		
-    }
+		private void IsUpdateNewAutoUpdater()
+		{
+			using (WebClient webClient = new WebClient())
+			{
+				using (Stream stream = webClient.OpenRead(url_version))
+				{
+					StreamReader reader = new StreamReader(stream);
+					var is_update = (reader.ReadToEnd().Split(new string[] { "\r\n" }, StringSplitOptions.None))[2];
+
+					if(is_update.Split(':')[1] == "1")
+					{
+						Application.Run(new NewsForm());
+						return;
+					}
+
+					Download();
+					OpenCmdInstall();
+				}
+			}
+
+			//ZipFile.ExtractToDirectory(download_file_path, extract_path);
+
+		}
+		private void OpenCmdInstall()
+		{
+			ProcessStartInfo startInfo = new ProcessStartInfo();
+			startInfo.FileName = download_folder_path + "\\install.exe";
+			Process.Start(startInfo);
+		}
+		#endregion
+	}
 }
 

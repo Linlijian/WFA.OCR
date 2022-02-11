@@ -28,8 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutoUpdateForm));
 			this.panelClient = new System.Windows.Forms.Panel();
 			this.pbAnimetion = new System.Windows.Forms.PictureBox();
+			this.DownloadingWorker = new System.ComponentModel.BackgroundWorker();
 			this.panelClient.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbAnimetion)).BeginInit();
 			this.SuspendLayout();
@@ -53,7 +55,12 @@
 			this.pbAnimetion.TabIndex = 2;
 			this.pbAnimetion.TabStop = false;
 			// 
-			// AutoUpdaterForm
+			// DownloadingWorker
+			// 
+			this.DownloadingWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.DownloadingWorker_DoWork);
+			this.DownloadingWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.DownloadingWorker_RunWorkerCompleted);
+			// 
+			// AutoUpdateForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -63,8 +70,9 @@
 			this.Controls.Add(this.panelClient);
 			this.Cursor = System.Windows.Forms.Cursors.AppStarting;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "AutoUpdaterForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Name = "AutoUpdateForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Load += new System.EventHandler(this.AutoUpdaterForm_Load);
 			this.panelClient.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbAnimetion)).EndInit();
@@ -75,6 +83,7 @@
 
 		private System.Windows.Forms.Panel panelClient;
 		private System.Windows.Forms.PictureBox pbAnimetion;
+		private System.ComponentModel.BackgroundWorker DownloadingWorker;
 	}
 }
 

@@ -63,6 +63,16 @@ namespace WFA.AutoUpdater.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap neko {
+            get {
+                object obj = ResourceManager.GetObject("neko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Sprite_006 {
             get {
                 object obj = ResourceManager.GetObject("Sprite_006", resourceCulture);
