@@ -6,6 +6,8 @@ using UtilityLib;
 using WFA.OCR.UserControls;
 using WFA.PlugIn;
 using HotkeyManagement;
+using WFA.OCR.Helper;
+using System.Diagnostics;
 
 namespace WFA.OCR
 {
@@ -114,22 +116,17 @@ namespace WFA.OCR
         {
             if (!SessionHelper.SYS_START_UP)
             {
-                //that work!
-                var message = new MassageBoxModel();
-                message.TITLE = SessionHelper.SYS_TITLE;
-                message.MESSAGE = SessionHelper.SYS_ERROR_CODE + " : " + SessionHelper.SYS_ERROR_MESSAGE;
-                message.BUTTON_TYPE = ButtonType.OK;
-
-                using (MassageBox box = new MassageBox(message))
-                {
-                    box.ShowDialog(this);
-                }
+				PluginHelper.MassageBox(SessionHelper.SYS_TITLE,
+					SessionHelper.SYS_ERROR_CODE + " : " + SessionHelper.SYS_ERROR_MESSAGE
+					, ButtonType.OK);
 
                 Application.Exit();
             }
             else
             {
-                _obj = this;
+				RunAutoUpdater();
+
+				_obj = this;
 
 				MyHotKeyManager = new HotKeyManager(this);
 				MyHotKeyManager.LocalHotKeyPressed += new LocalHotKeyEventHandler(KCaptureAreaHotkey);
@@ -179,6 +176,28 @@ namespace WFA.OCR
 				default:
 					if (e.HotKey.Tag != null) System.Diagnostics.Process.Start((string)e.HotKey.Tag);
 					break;
+			}
+		}
+		#endregion
+
+		#region method
+		private void RunAutoUpdater()
+		{
+			PluginHelper.MassageBox(SessionHelper.SYS_TITLE, SessionHelper.SYS_ERROR_MESSAGE, ButtonType.OK_CANCEL);
+			try
+			{
+				if (SessionHelper.SYS_DIALOG_RESULT)
+				{
+					ProcessStartInfo startInfo = new ProcessStartInfo();
+					startInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "WFA.AutoUpdater.exe";
+					Process.Start(startInfo);
+
+					Application.Exit();
+				}
+			}
+			catch (Exception e)
+			{
+				PluginHelper.MassageBox("Error", "WFA.AutoUpdater.exe not found\r\n" + e.Message, ButtonType.OK);
 			}
 		}
 		#endregion

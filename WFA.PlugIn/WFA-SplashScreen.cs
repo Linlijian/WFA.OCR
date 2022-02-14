@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -179,6 +181,23 @@ namespace WFA.PlugIn
 				}
 				#endregion
 
+				#region chek version
+				lblStatus.Text = "Check version";
+				string url_version = @"https://raw.githubusercontent.com/Lintemi/text/main/info.txt";
+
+				lblStatus.Text = "Get Main Info";
+				FileVersionInfo main_info = GetMainInfo();
+
+				lblStatus.Text = "Get Main Online Version";
+				string main_online_version = GetMainOnlineVersion(url_version);
+
+				if (main_info.FileVersion != main_online_version)
+				{
+					SessionHelper.SYS_ERROR_MESSAGE = "New Version Available\r\nWould you like to download and install the update?";
+					SessionHelper.SYS_TITLE = "Update";
+				}
+				#endregion
+
 				SessionHelper.SYS_START_UP = true;
 			}
 			catch (Exception e)
@@ -252,6 +271,32 @@ namespace WFA.PlugIn
 				g.DrawImage(srcImage, 0, 0);
 
 				return dstImage;
+			}
+		}
+		private FileVersionInfo GetMainInfo()
+		{
+			var all_file = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.exe");
+			foreach (var file in all_file)
+			{
+				FileVersionInfo info = FileVersionInfo.GetVersionInfo(file);
+				if (info.ProductName == "WFA.OCR")
+				{
+					return FileVersionInfo.GetVersionInfo(file);
+				}
+			}
+
+			return null;
+		}
+		private string GetMainOnlineVersion(string url_version)
+		{
+			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+			using (WebClient webClient = new WebClient())
+			{
+				using (Stream stream = webClient.OpenRead(url_version))
+				{
+					StreamReader reader = new StreamReader(stream);
+					return (reader.ReadToEnd().Split(new string[] { "\r\n", ":" }, StringSplitOptions.None))[1];
+				}
 			}
 		}
 		#endregion
