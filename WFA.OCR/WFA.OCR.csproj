@@ -267,6 +267,7 @@
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
     <Content Include="login_w_wuI_icon.ico" />
+    <Content Include="Version\version.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UCControl\UCControl.csproj">
