@@ -89,14 +89,20 @@
     <Compile Include="WFA-SplashScreen.Designer.cs">
       <DependentUpon>WFA-SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WFA-WaitForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WFA-WaitForm.Designer.cs">
       <DependentUpon>WFA-WaitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WFA.News.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WFA.News.Designer.cs">
+      <DependentUpon>WFA.News.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UCScrollbar.resx">
       <DependentUpon>UCScrollbar.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,9 +123,6 @@
     <EmbeddedResource Include="WFA-SplashScreen.resx">
       <DependentUpon>WFA-SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WFA-WaitForm.resx">
-      <DependentUpon>WFA-WaitForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -130,6 +133,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WFA-WaitForm.resx">
+      <DependentUpon>WFA-WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WFA.News.resx">
+      <DependentUpon>WFA.News.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -192,6 +201,9 @@
     <None Include="Image\Resources\icon\logo_dSi_8.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\Resources\gif\neko.gif" />
+    <Content Include="Image\Resources\gif\neko2.gif" />
+    <Content Include="Image\Resources\gif\Sprite-006.gif" />
     <Content Include="Image\Resources\png\contact_details_32px.png" />
     <Content Include="Image\Resources\png\copy_24px.png" />
     <Content Include="Image\Resources\png\copy_32px.png" />

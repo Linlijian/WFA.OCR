@@ -413,6 +413,26 @@ namespace WFA.PlugIn.Image {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap neko {
+            get {
+                object obj = ResourceManager.GetObject("neko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap neko2 {
+            get {
+                object obj = ResourceManager.GetObject("neko2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap pdf_64px {
             get {
                 object obj = ResourceManager.GetObject("pdf_64px", resourceCulture);
@@ -456,6 +476,16 @@ namespace WFA.PlugIn.Image {
         public static System.Drawing.Bitmap settings_64px {
             get {
                 object obj = ResourceManager.GetObject("settings_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Sprite_006 {
+            get {
+                object obj = ResourceManager.GetObject("Sprite_006", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

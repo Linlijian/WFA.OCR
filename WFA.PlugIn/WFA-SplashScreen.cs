@@ -157,6 +157,28 @@ namespace WFA.PlugIn
 				SessionHelper.ABM_PROFILE_IMAGE = ClipToCircle(img, new PointF(img.Width / 2, img.Height / 2), img.Width / 2, Color.FromArgb(0, 0, 0));
 				#endregion
 
+				#region load news
+				lblStatus.Text = "Load news";
+				string path_update = Path.GetTempPath() + "WFA.OCR";
+				if (Directory.Exists(path_update))
+				{
+					if(!Directory.GetFiles(path_update, "i.pikun").IsNullOrEmpty())
+					{
+						string path_info = Directory.GetFiles(path_update, "i.pikun")[0];
+						var info = File.ReadAllText(path_info).Split(new string[] { "info:" }, StringSplitOptions.None);
+						SessionHelper.SYS_NEWS = info.Last().Replace(";", "\r\n");
+
+						using (News form = new News())
+						{
+							form.ShowDialog();
+						}
+					}
+
+					lblStatus.Text = "Clear temp";
+					Directory.Delete(path_update, true);
+				}
+				#endregion
+
 				SessionHelper.SYS_START_UP = true;
 			}
 			catch (Exception e)

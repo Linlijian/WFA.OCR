@@ -33,7 +33,7 @@ namespace UtilityLib
 
 
 		public static System.Drawing.Image ABM_PROFILE_IMAGE;
-		//public static string TRANS_LANGUAGE_FROM;
+		public static string SYS_NEWS;
 		//public static string TRANS_LANGUAGE_TO;
 		//public static string TRANS_LANGUAGE;
 
