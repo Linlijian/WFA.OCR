@@ -164,7 +164,7 @@ namespace WFA.PlugIn
 				string path_update = Path.GetTempPath() + "WFA.OCR";
 				if (Directory.Exists(path_update))
 				{
-					if(!Directory.GetFiles(path_update, "i.pikun").IsNullOrEmpty())
+					if(Directory.GetFiles(path_update, "i.pikun").Count() > 0)
 					{
 						string path_info = Directory.GetFiles(path_update, "i.pikun")[0];
 						var info = File.ReadAllText(path_info).Split(new string[] { "info:" }, StringSplitOptions.None);

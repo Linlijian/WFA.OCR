@@ -156,8 +156,10 @@ namespace WFA.AutoUpdater
 		}
 		private void OpenCmdInstall()
 		{
+			string install_path = download_folder_path + "\\CA.Install.exe";
 			ProcessStartInfo startInfo = new ProcessStartInfo();
-			startInfo.FileName = download_folder_path + "\\install.exe";
+			File.Copy(extract_path + "CA.Install.exe", install_path);
+			startInfo.FileName = install_path;
 			Process.Start(startInfo);
 		}
 		#endregion
