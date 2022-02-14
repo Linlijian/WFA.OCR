@@ -45,6 +45,7 @@ namespace WFA.PlugIn
 		{
 			InitializeComponent();
 			txtMessage.Text = SessionHelper.SYS_NEWS;
+			pbAniemtion.Image = Image.ImageResource.neko2;
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)

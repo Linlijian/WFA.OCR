@@ -183,7 +183,7 @@ namespace WFA.PlugIn
 
 				#region chek version
 				lblStatus.Text = "Check version";
-				string url_version = @"https://raw.githubusercontent.com/Lintemi/text/main/info.txt";
+				string url_version = @"https://raw.githubusercontent.com/Linlijian/WFA.OCR/master/WFA.OCR/Version/version.txt";
 
 				lblStatus.Text = "Get Main Info";
 				FileVersionInfo main_info = GetMainInfo();
@@ -295,7 +295,7 @@ namespace WFA.PlugIn
 				using (Stream stream = webClient.OpenRead(url_version))
 				{
 					StreamReader reader = new StreamReader(stream);
-					return (reader.ReadToEnd().Split(new string[] { "\r\n", ":" }, StringSplitOptions.None))[1];
+					return (reader.ReadToEnd().Split(new string[] { "#", ":" }, StringSplitOptions.None))[1];
 				}
 			}
 		}

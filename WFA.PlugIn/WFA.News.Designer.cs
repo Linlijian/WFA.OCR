@@ -34,12 +34,13 @@
 			this.lblPanelTitle = new System.Windows.Forms.Label();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.panelItem = new System.Windows.Forms.Panel();
-			this.ucScrollbar1 = new CustomControls.UCScrollbar();
 			this.txtMessage = new System.Windows.Forms.TextBox();
 			this.lblTopic = new System.Windows.Forms.Label();
+			this.pbAniemtion = new System.Windows.Forms.PictureBox();
 			this.panelTop.SuspendLayout();
 			this.panelTitle.SuspendLayout();
 			this.panelItem.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbAniemtion)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panelTop
@@ -94,44 +95,23 @@
 			// 
 			// panelItem
 			// 
-			this.panelItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.panelItem.Controls.Add(this.ucScrollbar1);
+			this.panelItem.BackColor = System.Drawing.Color.Black;
+			this.panelItem.Controls.Add(this.pbAniemtion);
 			this.panelItem.Controls.Add(this.txtMessage);
 			this.panelItem.Controls.Add(this.lblTopic);
 			this.panelItem.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelItem.Location = new System.Drawing.Point(0, 40);
 			this.panelItem.Name = "panelItem";
-			this.panelItem.Size = new System.Drawing.Size(360, 341);
+			this.panelItem.Size = new System.Drawing.Size(360, 539);
 			this.panelItem.TabIndex = 5;
-			// 
-			// ucScrollbar1
-			// 
-			this.ucScrollbar1.ChannelColor = System.Drawing.Color.Black;
-			this.ucScrollbar1.DownArrowImage = ((System.Drawing.Image)(resources.GetObject("ucScrollbar1.DownArrowImage")));
-			this.ucScrollbar1.LargeChange = 10;
-			this.ucScrollbar1.Location = new System.Drawing.Point(324, 51);
-			this.ucScrollbar1.Maximum = 100;
-			this.ucScrollbar1.Minimum = 0;
-			this.ucScrollbar1.MinimumSize = new System.Drawing.Size(15, 92);
-			this.ucScrollbar1.Name = "ucScrollbar1";
-			this.ucScrollbar1.Size = new System.Drawing.Size(24, 278);
-			this.ucScrollbar1.SmallChange = 1;
-			this.ucScrollbar1.TabIndex = 15;
-			this.ucScrollbar1.ThumbBottomImage = ((System.Drawing.Image)(resources.GetObject("ucScrollbar1.ThumbBottomImage")));
-			this.ucScrollbar1.ThumbBottomSpanImage = ((System.Drawing.Image)(resources.GetObject("ucScrollbar1.ThumbBottomSpanImage")));
-			this.ucScrollbar1.ThumbMiddleImage = ((System.Drawing.Image)(resources.GetObject("ucScrollbar1.ThumbMiddleImage")));
-			this.ucScrollbar1.ThumbTopImage = ((System.Drawing.Image)(resources.GetObject("ucScrollbar1.ThumbTopImage")));
-			this.ucScrollbar1.ThumbTopSpanImage = ((System.Drawing.Image)(resources.GetObject("ucScrollbar1.ThumbTopSpanImage")));
-			this.ucScrollbar1.UpArrowImage = ((System.Drawing.Image)(resources.GetObject("ucScrollbar1.UpArrowImage")));
-			this.ucScrollbar1.Value = 0;
 			// 
 			// txtMessage
 			// 
-			this.txtMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.txtMessage.BackColor = System.Drawing.Color.Black;
 			this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.txtMessage.Font = new System.Drawing.Font("Itim", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtMessage.ForeColor = System.Drawing.Color.White;
-			this.txtMessage.Location = new System.Drawing.Point(11, 51);
+			this.txtMessage.Location = new System.Drawing.Point(12, 227);
 			this.txtMessage.Multiline = true;
 			this.txtMessage.Name = "txtMessage";
 			this.txtMessage.ReadOnly = true;
@@ -141,21 +121,30 @@
 			// lblTopic
 			// 
 			this.lblTopic.AutoSize = true;
-			this.lblTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.lblTopic.BackColor = System.Drawing.Color.Black;
 			this.lblTopic.Font = new System.Drawing.Font("Itim", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
 			this.lblTopic.ForeColor = System.Drawing.Color.White;
-			this.lblTopic.Location = new System.Drawing.Point(15, 21);
+			this.lblTopic.Location = new System.Drawing.Point(7, 197);
 			this.lblTopic.Name = "lblTopic";
 			this.lblTopic.Size = new System.Drawing.Size(149, 27);
 			this.lblTopic.TabIndex = 1;
 			this.lblTopic.Text = "New Update!!";
 			// 
+			// pbAniemtion
+			// 
+			this.pbAniemtion.Location = new System.Drawing.Point(64, 6);
+			this.pbAniemtion.Name = "pbAniemtion";
+			this.pbAniemtion.Size = new System.Drawing.Size(225, 188);
+			this.pbAniemtion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pbAniemtion.TabIndex = 15;
+			this.pbAniemtion.TabStop = false;
+			// 
 			// News
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-			this.ClientSize = new System.Drawing.Size(360, 381);
+			this.BackColor = System.Drawing.Color.Black;
+			this.ClientSize = new System.Drawing.Size(360, 579);
 			this.ControlBox = false;
 			this.Controls.Add(this.panelItem);
 			this.Controls.Add(this.panelTop);
@@ -169,6 +158,7 @@
 			this.panelTitle.PerformLayout();
 			this.panelItem.ResumeLayout(false);
 			this.panelItem.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbAniemtion)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -181,6 +171,6 @@
 		private System.Windows.Forms.Panel panelItem;
 		private System.Windows.Forms.Label lblTopic;
 		private System.Windows.Forms.TextBox txtMessage;
-		private CustomControls.UCScrollbar ucScrollbar1;
+		private System.Windows.Forms.PictureBox pbAniemtion;
 	}
 }

@@ -13,8 +13,8 @@ namespace WFA.AutoUpdater
     {
 		#region init
 		private bool downloading_process_notcomplete = true;
-		private string url_version = @"https://raw.githubusercontent.com/Lintemi/text/main/info.txt";
-		private string url_donwload_file = @"";
+		private string url_version = @"https://raw.githubusercontent.com/Linlijian/WFA.OCR/master/WFA.OCR/Version/version.txt";
+		private string url_donwload_file = @"https://github.com/Linlijian/WFA.OCR/releases/download/Release/WFA.OCR.zip";
 		private string download_file_path = Path.GetTempPath() + "WFA.OCR//WFA.OCR.zip";
 		private string download_folder_path = Path.GetTempPath() + "WFA.OCR";
 		private string extract_path = AppDomain.CurrentDomain.BaseDirectory;
@@ -70,6 +70,7 @@ namespace WFA.AutoUpdater
 			{
 				//close worker
 				downloading_process_notcomplete = false;
+				Application.Exit();
 			}
 		}
 		#endregion
@@ -96,7 +97,9 @@ namespace WFA.AutoUpdater
 				using (Stream stream = webClient.OpenRead(url_version))
 				{
 					StreamReader reader = new StreamReader(stream);
-					return (reader.ReadToEnd().Split(new string[] { "\r\n", ":" }, StringSplitOptions.None))[1];
+					var v = reader.ReadToEnd();
+					var version = v.Split(new string[] { "#", ":" }, StringSplitOptions.None);
+					return version[1];
 				}
 			}
 		}
@@ -112,7 +115,7 @@ namespace WFA.AutoUpdater
 				using (Stream stream = webClient.OpenRead(url_version))
 				{
 					StreamReader reader = new StreamReader(stream);
-					var info = (reader.ReadToEnd().Split(new string[] { "\r\n" }, StringSplitOptions.None))[1];
+					var info = (reader.ReadToEnd().Split(new string[] { "#" }, StringSplitOptions.None))[1];
 
 					string i = download_folder_path + "//i.pikun";
 					using (StreamWriter writer = new StreamWriter(i))
@@ -138,7 +141,7 @@ namespace WFA.AutoUpdater
 				using (Stream stream = webClient.OpenRead(url_version))
 				{
 					StreamReader reader = new StreamReader(stream);
-					var is_update = (reader.ReadToEnd().Split(new string[] { "\r\n" }, StringSplitOptions.None))[2];
+					var is_update = (reader.ReadToEnd().Split(new string[] { "#" }, StringSplitOptions.None))[2];
 
 					if(is_update.Split(':')[1] == "1")
 					{
@@ -158,7 +161,7 @@ namespace WFA.AutoUpdater
 		{
 			string install_path = download_folder_path + "\\CA.Install.exe";
 			ProcessStartInfo startInfo = new ProcessStartInfo();
-			File.Copy(extract_path + "CA.Install.exe", install_path);
+			File.Copy(extract_path + "CA.Install.exe", install_path, true);
 			startInfo.FileName = install_path;
 			Process.Start(startInfo);
 		}
