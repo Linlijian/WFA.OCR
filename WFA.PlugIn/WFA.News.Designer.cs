@@ -34,9 +34,9 @@
 			this.lblPanelTitle = new System.Windows.Forms.Label();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.panelItem = new System.Windows.Forms.Panel();
-			this.lblTopic = new System.Windows.Forms.Label();
-			this.txtMessage = new System.Windows.Forms.TextBox();
 			this.ucScrollbar1 = new CustomControls.UCScrollbar();
+			this.txtMessage = new System.Windows.Forms.TextBox();
+			this.lblTopic = new System.Windows.Forms.Label();
 			this.panelTop.SuspendLayout();
 			this.panelTitle.SuspendLayout();
 			this.panelItem.SuspendLayout();
@@ -84,12 +84,12 @@
 			this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
 			this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnClose.ForeColor = System.Drawing.Color.Black;
+			this.btnClose.Image = global::WFA.PlugIn.Image.ImageResource.delete_32px;
 			this.btnClose.Location = new System.Drawing.Point(324, 3);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(33, 33);
 			this.btnClose.TabIndex = 1;
 			this.btnClose.UseVisualStyleBackColor = false;
-			this.btnClose.Image = WFA.PlugIn.Image.ImageResource.delete_32px;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
 			// panelItem
@@ -103,31 +103,6 @@
 			this.panelItem.Name = "panelItem";
 			this.panelItem.Size = new System.Drawing.Size(360, 341);
 			this.panelItem.TabIndex = 5;
-			// 
-			// lblTopic
-			// 
-			this.lblTopic.AutoSize = true;
-			this.lblTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.lblTopic.Font = new System.Drawing.Font("Itim", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-			this.lblTopic.ForeColor = System.Drawing.Color.White;
-			this.lblTopic.Location = new System.Drawing.Point(15, 21);
-			this.lblTopic.Name = "lblTopic";
-			this.lblTopic.Size = new System.Drawing.Size(149, 27);
-			this.lblTopic.TabIndex = 1;
-			this.lblTopic.Text = "New Update!!";
-			// 
-			// txtMessage
-			// 
-			this.txtMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.txtMessage.Font = new System.Drawing.Font("Itim", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtMessage.ForeColor = System.Drawing.Color.White;
-			this.txtMessage.Location = new System.Drawing.Point(11, 51);
-			this.txtMessage.Multiline = true;
-			this.txtMessage.Name = "txtMessage";
-			this.txtMessage.ReadOnly = true;
-			this.txtMessage.Size = new System.Drawing.Size(337, 278);
-			this.txtMessage.TabIndex = 14;
 			// 
 			// ucScrollbar1
 			// 
@@ -150,6 +125,31 @@
 			this.ucScrollbar1.UpArrowImage = ((System.Drawing.Image)(resources.GetObject("ucScrollbar1.UpArrowImage")));
 			this.ucScrollbar1.Value = 0;
 			// 
+			// txtMessage
+			// 
+			this.txtMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.txtMessage.Font = new System.Drawing.Font("Itim", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtMessage.ForeColor = System.Drawing.Color.White;
+			this.txtMessage.Location = new System.Drawing.Point(11, 51);
+			this.txtMessage.Multiline = true;
+			this.txtMessage.Name = "txtMessage";
+			this.txtMessage.ReadOnly = true;
+			this.txtMessage.Size = new System.Drawing.Size(337, 278);
+			this.txtMessage.TabIndex = 14;
+			// 
+			// lblTopic
+			// 
+			this.lblTopic.AutoSize = true;
+			this.lblTopic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.lblTopic.Font = new System.Drawing.Font("Itim", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+			this.lblTopic.ForeColor = System.Drawing.Color.White;
+			this.lblTopic.Location = new System.Drawing.Point(15, 21);
+			this.lblTopic.Name = "lblTopic";
+			this.lblTopic.Size = new System.Drawing.Size(149, 27);
+			this.lblTopic.TabIndex = 1;
+			this.lblTopic.Text = "New Update!!";
+			// 
 			// News
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +161,7 @@
 			this.Controls.Add(this.panelTop);
 			this.Cursor = System.Windows.Forms.Cursors.Arrow;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "News";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.panelTop.ResumeLayout(false);
