@@ -124,7 +124,7 @@ namespace WFA.OCR
             }
             else
             {
-				RunAutoUpdater();
+				if(SessionHelper.SYS_IS_NEW_VERSION) RunAutoUpdater();
 
 				_obj = this;
 

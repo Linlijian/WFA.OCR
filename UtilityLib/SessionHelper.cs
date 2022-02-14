@@ -34,7 +34,7 @@ namespace UtilityLib
 
 		public static System.Drawing.Image ABM_PROFILE_IMAGE;
 		public static string SYS_NEWS;
-		//public static string TRANS_LANGUAGE_TO;
+		public static bool SYS_IS_NEW_VERSION;
 		//public static string TRANS_LANGUAGE;
 
 		public static string SYS_SOU_LANGUAGE;

@@ -195,6 +195,7 @@ namespace WFA.PlugIn
 				{
 					SessionHelper.SYS_ERROR_MESSAGE = "New Version Available\r\nWould you like to download and install the update?";
 					SessionHelper.SYS_TITLE = "Update";
+					SessionHelper.SYS_IS_NEW_VERSION = true;
 				}
 				#endregion
 
