@@ -55,40 +55,54 @@ namespace Helper
 		}
 		private string TranslateText(string text, string trans_from, string trans_to)
 		{
-			string url = String.Format
-			("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
-			 trans_from, trans_to, Uri.EscapeUriString(text));
-
-			HttpClient httpClient = new HttpClient();
-			string result = httpClient.GetStringAsync(url).Result;
-
-			var jsonData = new JavaScriptSerializer().Deserialize<List<dynamic>>(result);
-			var translationItems = jsonData[0];
-			string translation = "";
-
-			foreach (object item in translationItems)
+			try
 			{
-				IEnumerable translationLineObject = item as IEnumerable;
-				IEnumerator translationLineString = translationLineObject.GetEnumerator();
-				translationLineString.MoveNext();
-				translation += string.Format(" {0}", Convert.ToString(translationLineString.Current));
+				string url = String.Format
+					("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
+					 trans_from, trans_to, Uri.EscapeUriString(text));
+
+				HttpClient httpClient = new HttpClient();
+				string result = httpClient.GetStringAsync(url).Result;
+
+				var jsonData = new JavaScriptSerializer().Deserialize<List<dynamic>>(result);
+				var translationItems = jsonData[0];
+				string translation = "";
+
+				foreach (object item in translationItems)
+				{
+					IEnumerable translationLineObject = item as IEnumerable;
+					IEnumerator translationLineString = translationLineObject.GetEnumerator();
+					translationLineString.MoveNext();
+					translation += string.Format(" {0}", Convert.ToString(translationLineString.Current));
+				}
+
+				if (translation.Length > 1) { translation = translation.Substring(1); };
+
+				return translation;
 			}
-
-			if (translation.Length > 1) { translation = translation.Substring(1); };
-
-			return translation;
+			catch (Exception e)
+			{
+				return e.Message;
+			}
 		}
 		public static Bitmap CaptureImage(bool showCursor, Size curSize, Point curPos, Point SourcePoint, Point DestinationPoint, Rectangle SelectionRectangle)
 		{
-			using (Bitmap bitmap = new Bitmap(SelectionRectangle.Width, SelectionRectangle.Height))
+			try
 			{
-				using (Graphics g = Graphics.FromImage(bitmap))
+				using (Bitmap bitmap = new Bitmap(SelectionRectangle.Width, SelectionRectangle.Height))
 				{
-					g.CopyFromScreen(SourcePoint, DestinationPoint, SelectionRectangle.Size);
-					bitmap.Save(Path.GetTempPath() + "CaptureImage.bmp", ImageFormat.Bmp);
-				}
+					using (Graphics g = Graphics.FromImage(bitmap))
+					{
+						g.CopyFromScreen(SourcePoint, DestinationPoint, SelectionRectangle.Size);
+						bitmap.Save(Path.GetTempPath() + "CaptureImage.bmp", ImageFormat.Bmp);
+					}
 
-				return bitmap;
+					return bitmap;
+				}
+			}
+			catch (Exception)
+			{
+				return null;
 			}
 		}
 		public static void CaptureImage(bool showCursor, Size curSize, Point curPos, Point SourcePoint, Point DestinationPoint, Rectangle SelectionRectangle, string FilePath, string extension)

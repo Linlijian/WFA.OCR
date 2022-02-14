@@ -44,6 +44,24 @@ namespace WFA.PlugIn
 		public News()
 		{
 			InitializeComponent();
+
+			var size_arr = SessionHelper.SYS_NEWS.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+			int size = size_arr.Length - 1;
+			if (size * 25 <= 200)
+			{
+				int new_size = (size * 25);
+				this.txtMessage.Size = new System.Drawing.Size(337, new_size);
+				if(size * 20 > 100) this.ClientSize = new System.Drawing.Size(360, 390 + (20 * size));
+				this.ucScrollbar.Visible = false;
+			}
+			else
+			{
+				int new_size = 200;
+				this.txtMessage.Size = new System.Drawing.Size(337, new_size);
+				this.ClientSize = new System.Drawing.Size(360, 390 + (20 * 8));
+				this.ucScrollbar.Visible = true;
+			}
+
 			txtMessage.Text = SessionHelper.SYS_NEWS;
 			pbAniemtion.Image = Image.ImageResource.neko2;
 		}
