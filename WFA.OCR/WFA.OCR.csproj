@@ -285,6 +285,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FormControls\" />
     <Folder Include="TessData\" />
   </ItemGroup>
   <ItemGroup>
