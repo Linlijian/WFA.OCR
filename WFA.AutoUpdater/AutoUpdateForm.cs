@@ -14,7 +14,7 @@ namespace WFA.AutoUpdater
 		#region init
 		private bool downloading_process_notcomplete = true;
 		private string url_version = @"https://raw.githubusercontent.com/Linlijian/WFA.OCR/master/WFA.OCR/Version/version.txt";
-		private string url_donwload_file = @"https://github.com/Linlijian/WFA.OCR/releases/download/Release/WFA.OCR.zip";
+		private string url_donwload_file = @"https://github.com/Linlijian/WFA.OCR/raw/master/WFA.OCR/Deploy/Deploy.zip";
 		private string download_file_path = Path.GetTempPath() + "WFA.OCR//WFA.OCR.zip";
 		private string download_folder_path = Path.GetTempPath() + "WFA.OCR";
 		private string extract_path = AppDomain.CurrentDomain.BaseDirectory;
@@ -52,7 +52,7 @@ namespace WFA.AutoUpdater
 			try
 			{
 				txt_err = "Get Main Info";
-				FileVersionInfo main_info = GetMainInfo();
+				FileVersionInfo main_info = GetMainInfo("WFA.OCR");
 
 				txt_err = "Get Main Online Version";
 				string main_online_version = GetMainOnlineVersion();
@@ -76,13 +76,13 @@ namespace WFA.AutoUpdater
 		#endregion
 
 		#region method
-		private FileVersionInfo GetMainInfo()
+		private FileVersionInfo GetMainInfo(string product_name)
 		{
 			var all_file = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.exe");
 			foreach (var file in all_file)
 			{
 				FileVersionInfo info = FileVersionInfo.GetVersionInfo(file);
-				if (info.ProductName == "WFA.OCR")
+				if (info.ProductName == product_name)
 				{
 					return FileVersionInfo.GetVersionInfo(file);
 				}
@@ -141,12 +141,21 @@ namespace WFA.AutoUpdater
 				using (Stream stream = webClient.OpenRead(url_version))
 				{
 					StreamReader reader = new StreamReader(stream);
-					var is_update = (reader.ReadToEnd().Split(new string[] { "#" }, StringSplitOptions.None))[2];
+					var stream_txt = reader.ReadToEnd();
+					var is_update = (stream_txt.Split(new string[] { "#" }, StringSplitOptions.None))[2];
 
 					if(is_update.Split(':')[1] == "1")
 					{
-						Application.Run(new NewsForm());
-						return;
+						// กรณีต้องการอัพเดทผ่าน github page ให้เป็น is_update:1 โดย WFA.AutoUpdater v. จะเปลี่ยน ณ ที่นี้
+						// แล้วอัพเดท WFA.OCR ผ่าน bin folder ตามปกติแล้ว
+						var autoupdate_v = ((stream_txt.Split(new string[] { "#" }, StringSplitOptions.None))[3]).Split(':')[1];
+						FileVersionInfo local_v = GetMainInfo("WFA.AutoUpdater");
+
+						if (local_v.FileVersion != autoupdate_v)
+						{
+							Application.Run(new NewsForm());
+							return;
+						}
 					}
 
 					Download();
