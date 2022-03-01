@@ -393,6 +393,16 @@ namespace WFA.PlugIn.Image {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap microsoft_word_32px {
+            get {
+                object obj = ResourceManager.GetObject("microsoft_word_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap multiply_32px {
             get {
                 object obj = ResourceManager.GetObject("multiply_32px", resourceCulture);
@@ -426,6 +436,16 @@ namespace WFA.PlugIn.Image {
         public static System.Drawing.Bitmap neko2 {
             get {
                 object obj = ResourceManager.GetObject("neko2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap office_365_64px {
+            get {
+                object obj = ResourceManager.GetObject("office_365_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

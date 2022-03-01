@@ -29,31 +29,30 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCClientBody));
-			this.btnGroupImage = new System.Windows.Forms.Button();
+			this.btnMSOffice = new System.Windows.Forms.Button();
 			this.btnSetting = new System.Windows.Forms.Button();
 			this.btnAboutMe = new System.Windows.Forms.Button();
 			this.btnTranslate = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// btnGroupImage
+			// btnMSOffice
 			// 
-			this.btnGroupImage.Enabled = false;
-			this.btnGroupImage.FlatAppearance.BorderSize = 0;
-			this.btnGroupImage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-			this.btnGroupImage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-			this.btnGroupImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnGroupImage.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnGroupImage.ForeColor = System.Drawing.Color.White;
-			this.btnGroupImage.Image = ((System.Drawing.Image)(resources.GetObject("btnGroupImage.Image")));
-			this.btnGroupImage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnGroupImage.Location = new System.Drawing.Point(600, 100);
-			this.btnGroupImage.Name = "btnGroupImage";
-			this.btnGroupImage.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-			this.btnGroupImage.Size = new System.Drawing.Size(240, 80);
-			this.btnGroupImage.TabIndex = 3;
-			this.btnGroupImage.Text = "Group Image";
-			this.btnGroupImage.UseVisualStyleBackColor = true;
-			this.btnGroupImage.Visible = false;
+			this.btnMSOffice.FlatAppearance.BorderSize = 0;
+			this.btnMSOffice.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+			this.btnMSOffice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+			this.btnMSOffice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMSOffice.Font = new System.Drawing.Font("Itim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnMSOffice.ForeColor = System.Drawing.Color.White;
+			this.btnMSOffice.Image = ((System.Drawing.Image)(resources.GetObject("btnMSOffice.Image")));
+			this.btnMSOffice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnMSOffice.Location = new System.Drawing.Point(330, 100);
+			this.btnMSOffice.Name = "btnMSOffice";
+			this.btnMSOffice.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+			this.btnMSOffice.Size = new System.Drawing.Size(240, 80);
+			this.btnMSOffice.TabIndex = 3;
+			this.btnMSOffice.Text = "MS Office";
+			this.btnMSOffice.UseVisualStyleBackColor = true;
+			this.btnMSOffice.Click += new System.EventHandler(this.btnMSOffice_Click);
 			// 
 			// btnSetting
 			// 
@@ -85,7 +84,7 @@
 			this.btnAboutMe.ForeColor = System.Drawing.Color.White;
 			this.btnAboutMe.Image = ((System.Drawing.Image)(resources.GetObject("btnAboutMe.Image")));
 			this.btnAboutMe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnAboutMe.Location = new System.Drawing.Point(330, 100);
+			this.btnAboutMe.Location = new System.Drawing.Point(600, 100);
 			this.btnAboutMe.Name = "btnAboutMe";
 			this.btnAboutMe.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
 			this.btnAboutMe.Size = new System.Drawing.Size(240, 80);
@@ -118,7 +117,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Black;
-			this.Controls.Add(this.btnGroupImage);
+			this.Controls.Add(this.btnMSOffice);
 			this.Controls.Add(this.btnSetting);
 			this.Controls.Add(this.btnAboutMe);
 			this.Controls.Add(this.btnTranslate);
@@ -133,6 +132,6 @@
 		private System.Windows.Forms.Button btnTranslate;
 		private System.Windows.Forms.Button btnAboutMe;
 		private System.Windows.Forms.Button btnSetting;
-		private System.Windows.Forms.Button btnGroupImage;
+		private System.Windows.Forms.Button btnMSOffice;
 	}
 }

@@ -37,5 +37,15 @@ namespace WFA.OCR.UserControls
 			MainForm.Instance.PnlClientBody.Controls["UCClientAboutMe"].BringToFront();
 			MainForm.Instance.PnlTitle.BackColor = Color.FromArgb(32, 32, 32);
 		}
+
+		private void btnMSOffice_Click(object sender, EventArgs e)
+		{
+			if (!MainForm.Instance.PnlClientBody.Controls.ContainsKey("UCClientMSOffice"))
+			{
+				UserControlHelper.SetUserControl(MainForm.Instance.PnlClientBody, userControl: new UCClientMSOffice(), dockStyle: UserControlDockStyle.DockStyleFill);
+			}
+			MainForm.Instance.PnlClientBody.Controls["UCClientMSOffice"].BringToFront();
+			MainForm.Instance.PnlTitle.BackColor = Color.FromArgb(32, 32, 32);
+		}
 	}
 }

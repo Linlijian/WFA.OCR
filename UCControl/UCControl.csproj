@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MSOffice\MSOfficeDA.cs" />
+    <Compile Include="MSOffice\MSOfficeDTO.cs" />
+    <Compile Include="MSOffice\MSOfficeModel.cs" />
     <Compile Include="OCR\OCRDA.cs" />
     <Compile Include="OCR\OCRDTO.cs" />
     <Compile Include="OCR\OCRModel.cs" />

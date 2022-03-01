@@ -224,8 +224,10 @@
     <Content Include="Image\Resources\png\info_32px.png" />
     <Content Include="Image\Resources\png\jpg_32px.png" />
     <Content Include="Image\Resources\png\male_user_64px.png" />
+    <Content Include="Image\Resources\png\microsoft_word_32px.png" />
     <Content Include="Image\Resources\png\multiply_32px.png" />
     <Content Include="Image\Resources\png\multiply_48px.png" />
+    <Content Include="Image\Resources\png\office_365_64px.png" />
     <Content Include="Image\Resources\png\pdf_64px.png" />
     <Content Include="Image\Resources\png\pdf_window_32px.png" />
     <Content Include="Image\Resources\png\plus_math_32px.png" />
